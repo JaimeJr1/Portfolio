@@ -1,32 +1,32 @@
 export const collegeHighlights = [
   {
-    filename: 'hackathon-win-2025.jpg',
-    caption: 'Our team celebrating 1st place at the University Hackathon',
+    filename: 'nova-111-selection.jpg',
+    caption: 'Selected for the Nova 111 Student List — Top 10 in Computer Science in Spain. A recognition of academic excellence, leadership, and impact.',
     color: '#3fb950',
   },
   {
-    filename: 'research-presentation.jpg',
-    caption: 'Presenting our distributed systems research at IEEE',
+    filename: 'plix-internship.jpg',
+    caption: 'Joining Plix in San Francisco as a Systems & Infrastructure Engineering Intern. Grateful to Francisco Romero and the team for this opportunity.',
     color: '#58a6ff',
   },
   {
-    filename: 'study-abroad.jpg',
-    caption: 'Semester abroad — exploring Tokyo\'s tech district',
+    filename: 'state-capitol-sga.jpg',
+    caption: 'Representing Georgia Tech Student Government at the Georgia State Capitol. Met with Senate Majority Leader Jason Anavitarte to discuss student issues.',
     color: '#bc8cff',
   },
   {
-    filename: 'graduation-prep.jpg',
-    caption: 'Senior year project demo day with the team',
+    filename: 'bolivia-energy-project.jpg',
+    caption: 'Proud of our team\'s proposal for sustainable energy access in Bolivia\'s rural communities. Pushing boundaries towards a greener future.',
     color: '#d29922',
   },
   {
-    filename: 'coding-club.jpg',
-    caption: 'Leading the university Coding Club workshop',
+    filename: 'llamas-lab-research.jpg',
+    caption: 'Researching at the LLAMAS Lab — working at the intersection of AI for Systems, Edge Computing, and Multimodal AI.',
     color: '#f85149',
   },
   {
-    filename: 'campus-life.jpg',
-    caption: 'Late night coding sessions at the campus library',
+    filename: 'vr-research-starner.jpg',
+    caption: 'Building ML-informed VR safety simulations at Thad Starner\'s Lab. Decreased safety risk by 32% through data-driven analysis.',
     color: '#d18616',
   },
 ]

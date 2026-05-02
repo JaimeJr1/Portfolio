@@ -100,6 +100,13 @@ export default function Contact() {
         >
           {'</>'} view source
         </a>
+        <div className="mt-4 pt-3 border-t border-border/50">
+          <p className="text-text-muted/60 italic text-xs">
+            <span className="text-accent-yellow/60">{'// '}</span>
+            "The day you stop working hard, is the day you stop being lucky."
+            <span className="text-text-muted/40"> — R. Nadal</span>
+          </p>
+        </div>
       </footer>
     </section>
   )

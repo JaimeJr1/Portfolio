@@ -1,10 +1,10 @@
 export const SITE = {
-  name: 'Jaime Alonso',
-  title: 'Full Stack Developer | CS Student | Builder',
+  name: 'Jaime Alonso Bañez',
+  title: 'AI Systems & Edge Computing Researcher | CS @ Georgia Tech',
   prompt: 'jaime@portfolio',
   email: 'jaime@example.com',
-  currentlyWorkingOn: 'CloudSync v2',
-  sourceCode: 'https://github.com',
+  currentlyWorkingOn: 'Plix AI — Systems & Infrastructure',
+  sourceCode: 'https://github.com/JaimeJr1/Portfolio',
 }
 
 export const NAV_LINKS = [

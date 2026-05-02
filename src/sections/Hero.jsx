@@ -18,21 +18,24 @@ const COMMANDS = {
   skills      — list my skills
   clear       — clear the terminal
   date        — show current date
-  neofetch    — show system info`,
+  neofetch    — show system info
+  vamos       — a little inspiration`,
 
-  skills: `Languages:  JavaScript, TypeScript, Python, Rust, Java, SQL
-Frameworks: React, Next.js, Node.js, Express, FastAPI, Tailwind
-Tools:      Git, Docker, AWS, PostgreSQL, MongoDB, Linux`,
+  skills: `Languages:  Python, C, Java, JavaScript, SQL, C#
+Research:   Machine Learning, Edge Computing, AI Systems, VR/HCI
+Tools:      Git, Docker, Jupyter, Linux, Unity, NumPy, Pandas`,
 
   date: () => new Date().toString(),
 
+  vamos: `"La victoria pertenece a los más opiniatres." — Rafa Nadal`,
+
   neofetch: `       ╔══════════════╗
        ║  ▓▓▓▓▓▓▓▓▓▓  ║      ${SITE.name}
-       ║  ▓▓      ▓▓  ║      ──────────────────
+       ║  ▓▓      ▓▓  ║      ───────────────────────
        ║  ▓▓  ██  ▓▓  ║      OS: Portfolio v1.0
-       ║  ▓▓      ▓▓  ║      Shell: bash 5.2
-       ║  ▓▓▓▓▓▓▓▓▓▓  ║      Theme: Terminal Dark
-       ╚══════════════╝      Stack: React + Vite`,
+       ║  ▓▓      ▓▓  ║      School: Georgia Tech
+       ║  ▓▓▓▓▓▓▓▓▓▓  ║      Lab: LLAMAS @ GT
+       ╚══════════════╝      Vamos!`,
 }
 
 function scrollToSection(id) {

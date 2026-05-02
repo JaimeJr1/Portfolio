@@ -2,8 +2,8 @@ import { motion } from 'framer-motion'
 import { useCountUp } from '../hooks/useCountUp'
 
 const stats = [
-  { label: 'projects', value: 6, suffix: '+' },
-  { label: 'commits', value: 500, suffix: '+' },
+  { label: 'research_labs', value: 3, suffix: '' },
+  { label: 'internships', value: 3, suffix: '' },
   { label: 'technologies', value: 15, suffix: '+' },
   { label: 'cups_of_coffee', value: null, display: '∞' },
 ]

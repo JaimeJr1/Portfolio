@@ -5,21 +5,23 @@ import CommandOutput from '../components/terminal/CommandOutput'
 import Badge from '../components/ui/Badge'
 
 const info = [
-  { label: 'Name', value: 'Jaime Alonso' },
-  { label: 'Location', value: 'City, State' },
-  { label: 'University', value: 'University of Technology' },
+  { label: 'Name', value: 'Jaime Alonso Bañez' },
+  { label: 'Location', value: 'Atlanta, GA' },
+  { label: 'University', value: 'Georgia Institute of Technology' },
   { label: 'Major', value: 'Computer Science' },
+  { label: 'Current', value: 'Systems & Infrastructure Intern @ Plix' },
 ]
 
 const skills = [
-  'JavaScript', 'TypeScript', 'Python', 'React', 'Node.js',
-  'PostgreSQL', 'Docker', 'Git', 'AWS', 'Linux',
+  'Python', 'C', 'Java', 'JavaScript', 'SQL', 'C#',
+  'Machine Learning', 'Edge Computing', 'Unity',
+  'React', 'NumPy', 'Pandas', 'Git', 'Docker', 'Linux',
 ]
 
 const quickStats = [
-  { label: 'years_coding', value: '4' },
-  { label: 'projects', value: '6+' },
-  { label: 'gpa', value: '3.85' },
+  { label: 'research_labs', value: '3' },
+  { label: 'internships', value: '3' },
+  { label: 'nova_rank', value: 'Top 10' },
 ]
 
 export default function About() {
@@ -64,14 +66,17 @@ export default function About() {
 
           <div className="mt-6 border-t border-border pt-5 space-y-4">
             <p className="text-text-primary leading-relaxed">
-              I'm a passionate full stack developer and computer science student who loves building
-              things that solve real problems. From distributed systems to sleek front-end interfaces,
-              I enjoy working across the entire stack.
+              I'm a Computer Science student at Georgia Tech passionate about the intersection of
+              AI and systems engineering. From building ML-informed VR safety simulations to
+              researching edge computing at the LLAMAS Lab, I love tackling complex problems
+              that sit at the boundary of hardware and intelligence.
             </p>
             <p className="text-text-primary leading-relaxed">
-              When I'm not coding, you can find me contributing to open-source projects,
-              competing in hackathons, or exploring the latest in cloud computing and AI.
-              I believe in writing clean, maintainable code and learning something new every day.
+              I've interned at Plix (systems infrastructure), MIT Energy Initiative (AI for energy grids),
+              and Metro de Madrid (engineering operations). I'm also a Nova 111 honoree, ranked in the
+              top 10 Computer Science students nationally in Spain, and serve as CS Representative
+              in Georgia Tech's Student Government. Off the keyboard, you'll find me on the tennis
+              court — Rafa Nadal's mentality is something I carry into everything I do.
             </p>
           </div>
 

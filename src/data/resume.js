@@ -1,41 +1,80 @@
 export const resume = {
   education: [
     {
-      school: 'University of Technology',
+      school: 'Georgia Institute of Technology',
       degree: 'B.S. Computer Science',
-      date: 'Expected May 2026',
-      gpa: '3.85',
+      date: 'Expected 2027',
+      gpa: '',
       highlights: [
-        'Relevant Coursework: Data Structures, Algorithms, Systems Programming, Databases, Machine Learning',
-        'Teaching Assistant for Intro to Computer Science (2 semesters)',
+        'AI Systems & Edge Computing Research at LLAMAS Lab',
+        'Computer Science Representative — Student Government Association',
+        'VIP Program Researcher at Thad Starner\'s Lab',
       ],
     },
   ],
   experience: [
     {
-      title: 'Software Engineering Intern',
-      company: 'Tech Corp',
-      date: 'Jun 2025 - Aug 2025',
+      title: 'Systems & Infrastructure Engineering Intern',
+      company: 'Plix',
+      date: 'Apr 2026 - Present',
       bullets: [
-        'Developed RESTful APIs serving 10K+ daily requests using Node.js and Express',
-        'Implemented CI/CD pipeline reducing deployment time by 40%',
-        'Collaborated with cross-functional team of 8 engineers on microservices architecture',
+        'Full-time systems and infrastructure engineering role',
+        'Working on-site in the San Francisco Bay Area',
       ],
     },
     {
-      title: 'Undergraduate Research Assistant',
-      company: 'CS Department',
-      date: 'Jan 2025 - May 2025',
+      title: 'Research Assistant — LLAMAS Lab',
+      company: 'Georgia Tech Research',
+      date: 'Jan 2026 - Present',
       bullets: [
-        'Researched distributed consensus algorithms for edge computing',
-        'Built simulation framework in Python processing 1M+ data points',
-        'Co-authored paper accepted at IEEE International Conference',
+        'Research at the intersection of AI for Systems, Systems for AI, and Data Systems',
+        'Working on Latency-critical Analytics and Multimodal AI Systems',
+        'Spanning Edge/Wearables and Cloud computing',
+      ],
+    },
+    {
+      title: 'Research Assistant — Thad Starner\'s Lab',
+      company: 'Georgia Tech VIP Program',
+      date: 'Sep 2025 - Feb 2026',
+      bullets: [
+        'Enabled ML-informed safety training by analyzing HCI data from VR simulations',
+        'Implemented instrumented VR simulation pipelines in Unity with event-driven logging for 5+ scenarios',
+        'Processed simulation data using Python (NumPy, Pandas, SciPy) to decrease safety risk by 32%',
+        'Managed Git-based collaborative workflows for 10+ researchers',
+      ],
+    },
+    {
+      title: 'Undergraduate Researcher',
+      company: 'Georgia Tech Research Institute',
+      date: 'Jan 2025 - Sep 2025',
+      bullets: [
+        'Applied ML models to analyze dataset of 6,000+ patients to identify CPD risk factors',
+        'Built binary classification models (Logistic Regression, Random Forest, XGBoost) with 97.25% precision',
+        'Processed and validated 400+ data entries, reducing data collection errors',
+      ],
+    },
+    {
+      title: 'Intern',
+      company: 'MIT Energy Initiative',
+      date: 'Jul 2023 - Aug 2023',
+      bullets: [
+        'Aided in AI project GenX analyzing data for US grid ERCOT',
+        'Gained insight into lab research and Jupyter Notebook workflows',
+      ],
+    },
+    {
+      title: 'Intern',
+      company: 'Metro de Madrid',
+      date: 'Jun 2023',
+      bullets: [
+        'Shadowed engineering operations in energy saving & regeneration of Madrid subway system',
       ],
     },
   ],
   skills: {
-    languages: ['JavaScript', 'TypeScript', 'Python', 'Rust', 'Java', 'SQL'],
-    frameworks: ['React', 'Next.js', 'Node.js', 'Express', 'FastAPI', 'Tailwind CSS'],
-    tools: ['Git', 'Docker', 'AWS', 'PostgreSQL', 'MongoDB', 'Linux'],
+    languages: ['Python', 'C', 'Java', 'SQL', 'JavaScript', 'C#'],
+    frameworks: ['NumPy', 'Pandas', 'SciPy', 'Unity', 'React', 'Node.js'],
+    tools: ['Git', 'Docker', 'Jupyter', 'Linux', 'Kobo Toolbox', 'XGBoost'],
+    research: ['Machine Learning', 'Edge Computing', 'AI Systems', 'VR/HCI'],
   },
 }
