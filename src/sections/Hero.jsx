@@ -27,7 +27,7 @@ Tools:      Git, GitHub Actions, Django, Streamlit, GCP, Groq`,
 
   date: () => new Date().toString(),
 
-  vamos: `"La victoria pertenece a los más opiniatres." — Rafa Nadal`,
+  vamos: `"La victoire appartient aux plus opiniâtres." — Rafa Nadal`,
 
   neofetch: `       ╔══════════════╗
        ║  ▓▓▓▓▓▓▓▓▓▓  ║      ${SITE.name}
