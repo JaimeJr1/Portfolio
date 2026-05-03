@@ -23,6 +23,7 @@ function ProjectCard({ project, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-30px' }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
+      className="h-full"
     >
       <TerminalWindow
         title={
@@ -89,8 +90,7 @@ function ProjectCard({ project, index }) {
 }
 
 export default function Projects() {
-  const featured = projects.filter((p) => p.featured)
-  const rest = projects.filter((p) => !p.featured)
+  const sorted = [...projects].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
 
   return (
     <section className="w-full px-4 py-20 max-w-5xl mx-auto">
@@ -100,19 +100,9 @@ export default function Projects() {
         A collection of things I've built — from full-stack apps to CLI tools.
       </p>
 
-      {/* Featured projects first */}
-      {featured.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-          {featured.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} />
-          ))}
-        </div>
-      )}
-
-      {/* Rest */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {rest.map((project, i) => (
-          <ProjectCard key={project.title} project={project} index={i + featured.length} />
+        {sorted.map((project, i) => (
+          <ProjectCard key={project.title} project={project} index={i} />
         ))}
       </div>
     </section>
