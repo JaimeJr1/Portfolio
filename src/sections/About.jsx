@@ -5,23 +5,24 @@ import CommandOutput from '../components/terminal/CommandOutput'
 import Badge from '../components/ui/Badge'
 
 const info = [
-  { label: 'Name', value: 'Jaime Alonso Bañez' },
+  { label: 'Name', value: 'Jaime Alonso' },
   { label: 'Location', value: 'Atlanta, GA' },
   { label: 'University', value: 'Georgia Institute of Technology' },
-  { label: 'Major', value: 'Computer Science' },
+  { label: 'Major', value: 'CS — Intelligence & Info Internetworks' },
   { label: 'Current', value: 'Systems & Infrastructure Intern @ Plix' },
+  { label: 'Languages', value: 'English, Spanish (Native), French (Fluent)' },
 ]
 
 const skills = [
-  'Python', 'C', 'Java', 'JavaScript', 'SQL', 'C#',
-  'Machine Learning', 'Edge Computing', 'Unity',
-  'React', 'NumPy', 'Pandas', 'Git', 'Docker', 'Linux',
+  'Python', 'Java', 'C++', 'C', 'JavaScript',
+  'PyTorch', 'Scikit-learn', 'Pandas', 'NumPy', 'XGBoost',
+  'Unity', 'Streamlit', 'Django', 'Git', 'GCP', 'Docker',
 ]
 
 const quickStats = [
+  { label: 'gpa', value: '4.0' },
   { label: 'research_labs', value: '3' },
-  { label: 'internships', value: '3' },
-  { label: 'nova_rank', value: 'Top 10' },
+  { label: 'languages', value: '3' },
 ]
 
 export default function About() {
@@ -66,17 +67,17 @@ export default function About() {
 
           <div className="mt-6 border-t border-border pt-5 space-y-4">
             <p className="text-text-primary leading-relaxed">
-              I'm a Computer Science student at Georgia Tech passionate about the intersection of
-              AI and systems engineering. From building ML-informed VR safety simulations to
-              researching edge computing at the LLAMAS Lab, I love tackling complex problems
-              that sit at the boundary of hardware and intelligence.
+              I'm a Computer Science student at Georgia Tech (Faculty Honors, Global Leadership LLC)
+              passionate about the intersection of AI and systems engineering. From building ML-informed
+              VR safety simulations to researching edge computing at the LLAMAS Lab, I love tackling
+              complex problems that sit at the boundary of hardware and intelligence.
             </p>
             <p className="text-text-primary leading-relaxed">
-              I've interned at Plix (systems infrastructure), MIT Energy Initiative (AI for energy grids),
-              and Metro de Madrid (engineering operations). I'm also a Nova 111 honoree, ranked in the
-              top 10 Computer Science students nationally in Spain, and serve as CS Representative
-              in Georgia Tech's Student Government. Off the keyboard, you'll find me on the tennis
-              court — Rafa Nadal's mentality is something I carry into everything I do.
+              I've interned at Plix (systems infrastructure in SF), MIT Energy Initiative (AI for energy grids),
+              and Metro de Madrid (engineering operations). I'm a Nova 111 honoree ranked in the top 10 CS
+              students nationally in Spain, Deputy Lead of the Ramblin Rocket Club's software team, and CS
+              Representative in Georgia Tech's Student Government. Off the keyboard, you'll find me on the
+              tennis court — Rafa Nadal's mentality is something I carry into everything I do.
             </p>
           </div>
 

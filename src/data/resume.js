@@ -2,13 +2,12 @@ export const resume = {
   education: [
     {
       school: 'Georgia Institute of Technology',
-      degree: 'B.S. Computer Science',
-      date: 'Expected 2027',
-      gpa: '',
+      degree: 'B.S. Computer Science — Intelligence & Info Internetworks',
+      date: 'Expected May 2028',
+      gpa: '4.0',
       highlights: [
-        'AI Systems & Edge Computing Research at LLAMAS Lab',
-        'Computer Science Representative — Student Government Association',
-        'VIP Program Researcher at Thad Starner\'s Lab',
+        'Global Leadership LLC, Faculty Honors',
+        'Certification: SEPE - Industrial Applications of ML and AI at Ironhack',
       ],
     },
   ],
@@ -18,8 +17,7 @@ export const resume = {
       company: 'Plix',
       date: 'Apr 2026 - Present',
       bullets: [
-        'Full-time systems and infrastructure engineering role',
-        'Working on-site in the San Francisco Bay Area',
+        'Full-time systems and infrastructure engineering role in San Francisco Bay Area',
       ],
     },
     {
@@ -33,48 +31,42 @@ export const resume = {
       ],
     },
     {
-      title: 'Research Assistant — Thad Starner\'s Lab',
+      title: 'VIP Research Assistant — Thad Starner\'s Lab',
       company: 'Georgia Tech VIP Program',
-      date: 'Sep 2025 - Feb 2026',
+      date: 'Aug 2025 - Present',
       bullets: [
         'Enabled ML-informed safety training by analyzing HCI data from VR simulations',
-        'Implemented instrumented VR simulation pipelines in Unity with event-driven logging for 5+ scenarios',
+        'Implemented VR simulation pipelines in Unity with event-driven logging for 5+ scenarios',
         'Processed simulation data using Python (NumPy, Pandas, SciPy) to decrease safety risk by 32%',
         'Managed Git-based collaborative workflows for 10+ researchers',
       ],
     },
     {
-      title: 'Undergraduate Researcher',
+      title: 'Undergraduate Research Assistant — Gleason Lab',
       company: 'Georgia Tech Research Institute',
       date: 'Jan 2025 - Sep 2025',
       bullets: [
-        'Applied ML models to analyze dataset of 6,000+ patients to identify CPD risk factors',
+        'Applied ML models to analyze dataset of 6,000+ patients to identify CPD risk factors affecting 65% of Ethiopian women',
         'Built binary classification models (Logistic Regression, Random Forest, XGBoost) with 97.25% precision',
-        'Processed and validated 400+ data entries, reducing data collection errors',
+        'Processed and validated 400+ data entries in Kobo Toolbox, reducing data collection errors',
+        'Performed double data entry on 50+ records weekly, maintaining 99%+ accuracy',
       ],
     },
     {
-      title: 'Intern',
+      title: 'IT and Machine Learning Intern',
       company: 'MIT Energy Initiative',
       date: 'Jul 2023 - Aug 2023',
       bullets: [
-        'Aided in AI project GenX analyzing data for US grid ERCOT',
-        'Gained insight into lab research and Jupyter Notebook workflows',
-      ],
-    },
-    {
-      title: 'Intern',
-      company: 'Metro de Madrid',
-      date: 'Jun 2023',
-      bullets: [
-        'Shadowed engineering operations in energy saving & regeneration of Madrid subway system',
+        'Accelerated renewable energy integration through analysis of 2+ years of ERCOT grid data',
+        'Enabled strategic development of AI-driven grid optimization tool GenX for a 6-person team of MBA and PhD researchers',
+        'Enhanced research team productivity by delivering daily presentations to senior researchers',
       ],
     },
   ],
   skills: {
-    languages: ['Python', 'C', 'Java', 'SQL', 'JavaScript', 'C#'],
-    frameworks: ['NumPy', 'Pandas', 'SciPy', 'Unity', 'React', 'Node.js'],
-    tools: ['Git', 'Docker', 'Jupyter', 'Linux', 'Kobo Toolbox', 'XGBoost'],
-    research: ['Machine Learning', 'Edge Computing', 'AI Systems', 'VR/HCI'],
+    languages: ['Python', 'Java', 'C++', 'C#', 'C', 'JavaScript', 'HTML/CSS'],
+    'ml/data': ['Scikit-learn', 'PyTorch', 'Pandas', 'NumPy', 'Streamlit', 'XGBoost', 'HuggingFace'],
+    tools: ['Git', 'GitHub Actions', 'VS Code', 'Django', 'Kobo Toolbox', 'Jupyter'],
+    'cloud & ai': ['Google Cloud', 'Gemini AI', 'PythonAnywhere', 'MySQL', 'Groq'],
   },
 }

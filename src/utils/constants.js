@@ -1,8 +1,8 @@
 export const SITE = {
-  name: 'Jaime Alonso Bañez',
+  name: 'Jaime Alonso',
   title: 'AI Systems & Edge Computing Researcher | CS @ Georgia Tech',
   prompt: 'jaime@portfolio',
-  email: 'jaime@example.com',
+  email: 'jalonso34@gatech.edu',
   currentlyWorkingOn: 'Plix AI — Systems & Infrastructure',
   sourceCode: 'https://github.com/JaimeJr1/Portfolio',
 }

@@ -21,9 +21,9 @@ const COMMANDS = {
   neofetch    — show system info
   vamos       — a little inspiration`,
 
-  skills: `Languages:  Python, C, Java, JavaScript, SQL, C#
-Research:   Machine Learning, Edge Computing, AI Systems, VR/HCI
-Tools:      Git, Docker, Jupyter, Linux, Unity, NumPy, Pandas`,
+  skills: `Languages:  Python, Java, C++, C, JavaScript, C#
+ML/Data:    PyTorch, Scikit-learn, Pandas, NumPy, XGBoost, HuggingFace
+Tools:      Git, GitHub Actions, Django, Streamlit, GCP, Groq`,
 
   date: () => new Date().toString(),
 
