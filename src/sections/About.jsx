@@ -67,17 +67,22 @@ export default function About() {
 
           <div className="mt-6 border-t border-border pt-5 space-y-4">
             <p className="text-text-primary leading-relaxed">
-              I'm a Computer Science student at Georgia Tech (Faculty Honors, Global Leadership LLC)
-              passionate about the intersection of AI and systems engineering. From building ML-informed
-              VR safety simulations to researching edge computing at the LLAMAS Lab, I love tackling
-              complex problems that sit at the boundary of hardware and intelligence.
+              Rafa Nadal once said every point should be played like the last. That mentality shapes
+              how I approach engineering — no problem is too small to deserve full effort, no system
+              too complex to break down and master. Growing up between Spain and the U.S. taught me
+              to adapt fast and think across boundaries, which is exactly what pulled me into computer science.
             </p>
             <p className="text-text-primary leading-relaxed">
-              I've interned at Plix (systems infrastructure in SF), MIT Energy Initiative (AI for energy grids),
-              and Metro de Madrid (engineering operations). I'm a Nova 111 honoree ranked in the top 10 CS
-              students nationally in Spain, Deputy Lead of the Ramblin Rocket Club's software team, and CS
-              Representative in Georgia Tech's Student Government. Off the keyboard, you'll find me on the
-              tennis court — Rafa Nadal's mentality is something I carry into everything I do.
+              At Georgia Tech, I've channeled that intensity into work at the boundary of hardware and
+              intelligence — building ML-informed VR safety simulations, researching edge computing at the
+              LLAMAS Lab, and leading software for the Ramblin Rocket Club. Internships at Plix, MIT Energy
+              Initiative, and Metro de Madrid each taught me something different: how to build infrastructure
+              that scales, how AI reshapes energy grids, and how engineering keeps a city moving.
+            </p>
+            <p className="text-text-primary leading-relaxed">
+              I'm a Faculty Honors student, a Nova 111 honoree (top 10 CS in Spain), and CS Representative
+              in Student Government — but what I want people to remember is the curiosity. I want to build
+              systems that are as relentless as a Nadal forehand: precise, tireless, and always improving.
             </p>
           </div>
 

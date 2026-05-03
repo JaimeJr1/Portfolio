@@ -40,11 +40,15 @@ function ProjectCard({ project, index }) {
         }
         className="h-full hover:border-accent-green hover:shadow-[0_0_20px_rgba(63,185,80,0.1)] transition-all duration-300"
       >
-        {/* Project preview strip */}
-        <div
-          className="w-full h-2 rounded-full mb-4 opacity-60"
-          style={{ background: `linear-gradient(90deg, ${project.color}40, ${project.color})` }}
-        />
+        {/* Terminal preview block */}
+        <div className="relative w-full h-28 rounded border border-border/50 bg-bg-primary/50 p-3 mb-4 overflow-hidden font-mono text-xs">
+          {project.preview.map((line, i) => (
+            <div key={i} className={i === 0 ? 'text-accent-green' : 'text-text-muted'}>
+              {line}
+            </div>
+          ))}
+          <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-bg-primary/80 to-transparent pointer-events-none" />
+        </div>
 
         <div className="text-text-muted text-xs mb-3">
           <span className="text-accent-green">$</span> cat README.md

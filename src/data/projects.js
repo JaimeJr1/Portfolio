@@ -9,6 +9,13 @@ export const projects = [
     status: 'active',
     featured: true,
     color: '#3fb950',
+    preview: [
+      '$ python news_intel.py --run',
+      'Fetching RSS feeds... 5 sources',
+      'Running Llama 3.3 classifier...',
+      '✓ 12/47 articles matched',
+      '✓ Daily digest sent to 10 recipients',
+    ],
   },
   {
     title: 'Soccer League Explorer & Challenger',
@@ -20,6 +27,13 @@ export const projects = [
     status: 'active',
     featured: true,
     color: '#58a6ff',
+    preview: [
+      '$ streamlit run soccer_explorer.py',
+      'Loading 95+ teams across 5 leagues...',
+      'Gemini AI challenger ready',
+      '✓ La Liga  ✓ Premier League',
+      '✓ Serie A  ✓ Bundesliga  ✓ Ligue 1',
+    ],
   },
   {
     title: 'Solar-Oriented PV Cell System',
@@ -31,6 +45,13 @@ export const projects = [
     status: 'active',
     featured: true,
     color: '#d29922',
+    preview: [
+      '$ ./solar_tracker --start',
+      'Initializing servos... OK',
+      'Light sensor calibrated: 820 lux',
+      'Tracking sun position... 42.3°',
+      '✓ Output: 0.65W | Bluetooth: connected',
+    ],
   },
   {
     title: 'Weather Reminder',
@@ -42,6 +63,13 @@ export const projects = [
     status: 'active',
     featured: false,
     color: '#bc8cff',
+    preview: [
+      '$ python weather.py --send',
+      'Fetching forecast for Atlanta, GA...',
+      '☀ 78°F | Humidity: 45%',
+      '"Stay hungry, stay foolish."',
+      '✓ Email sent at 7:00 AM',
+    ],
   },
   {
     title: 'Frog Game',
@@ -53,6 +81,13 @@ export const projects = [
     status: 'archived',
     featured: false,
     color: '#f85149',
+    preview: [
+      '$ java -jar frog_game.jar',
+      'Loading level 1...',
+      '🐸 ━━━━━━━━━━━━━━━ 🏁',
+      '   🚗  🚙   🚕  🚗',
+      'Score: 350 | Lives: 3',
+    ],
   },
   {
     title: 'Movie Store',
@@ -64,5 +99,12 @@ export const projects = [
     status: 'archived',
     featured: false,
     color: '#d18616',
+    preview: [
+      '$ python manage.py runserver',
+      'Starting Django server on :8000',
+      'Models loaded: Movie, Genre, Review',
+      '✓ 120 movies in catalog',
+      '✓ Admin panel ready at /admin',
+    ],
   },
 ]

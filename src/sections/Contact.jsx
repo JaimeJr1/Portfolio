@@ -41,6 +41,26 @@ export default function Contact() {
               Want to collaborate or just say hi? Reach out through any of these channels.
             </p>
 
+            <div className="w-full max-w-md mb-6 px-4 py-3 rounded-lg border border-accent-green/30 bg-accent-green/5">
+              <div className="flex items-center gap-2 text-sm">
+                <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+                <span className="text-accent-green font-semibold">status:</span>
+                <span className="text-text-primary">open to opportunities</span>
+              </div>
+              <div className="mt-2 text-xs text-text-muted pl-4">
+                <span className="text-accent-green select-none">&gt; </span>
+                <span className="text-text-primary">looking_for</span>
+                <span className="text-accent-yellow"> = </span>
+                <span className="text-accent-cyan">"Fall 2026 / Summer 2027 internships"</span>
+              </div>
+              <div className="text-xs text-text-muted pl-4">
+                <span className="text-accent-green select-none">&gt; </span>
+                <span className="text-text-primary">interests</span>
+                <span className="text-accent-yellow"> = </span>
+                <span className="text-accent-cyan">["AI/ML", "systems", "infrastructure"]</span>
+              </div>
+            </div>
+
             <div className="space-y-3 w-full max-w-md">
               {socialLinks.map((link) => (
                 <a
