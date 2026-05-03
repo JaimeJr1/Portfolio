@@ -15,15 +15,12 @@ function HighlightCard({ highlight, index }) {
         title={highlight.filename}
         className="hover:border-accent-green hover:shadow-[0_0_20px_rgba(63,185,80,0.1)] transition-all duration-300"
       >
-        <div
-          className="w-full aspect-video rounded-md flex items-center justify-center text-4xl mb-3 border border-border/50"
-          style={{ backgroundColor: highlight.color + '12' }}
-        >
-          <div className="flex flex-col items-center gap-2">
-            <span style={{ color: highlight.color, opacity: 0.4, fontSize: '2.5rem' }}>{'</>'}</span>
-            <span className="text-xs text-text-muted">image placeholder</span>
-          </div>
-        </div>
+        <img
+          src={`${import.meta.env.BASE_URL}images/college/${highlight.filename}`}
+          alt={highlight.caption}
+          className="w-full aspect-video rounded-md object-cover mb-3 border border-border/50"
+          loading="lazy"
+        />
 
         <p className="text-text-muted text-xs text-center">
           <span className="text-accent-green">#</span> {highlight.caption}
