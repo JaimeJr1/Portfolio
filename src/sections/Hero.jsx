@@ -11,9 +11,7 @@ const COMMANDS = {
   help        — show this message
   about       — jump to about section
   projects    — jump to projects section
-  achievements— jump to achievements
   resume      — jump to resume
-  college     — jump to college highlights
   contact     — jump to contact info
   skills      — list my skills
   clear       — clear the terminal
@@ -85,7 +83,7 @@ export default function Hero() {
       return
     }
 
-    const sections = ['about', 'projects', 'achievements', 'resume', 'college', 'contact']
+    const sections = ['about', 'projects', 'resume', 'contact']
     if (sections.includes(trimmed)) {
       output = `Navigating to ${trimmed}...`
       setTimeout(() => scrollToSection(trimmed), 300)
@@ -199,10 +197,30 @@ export default function Hero() {
 
       {isComplete && (
         <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.7 }}
+          className="mt-8 flex flex-col items-center gap-4"
+        >
+          <h1 className="text-text-primary text-lg sm:text-xl md:text-2xl font-semibold text-center leading-snug max-w-lg">
+            Building intelligent systems —{' '}
+            <span className="text-accent-green">from edge devices to the cloud</span>.
+          </h1>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent-green/30 bg-accent-green/5">
+            <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+            <span className="text-accent-green text-xs font-medium">
+              Open to Fall 2026 / Summer 2027 internships
+            </span>
+          </div>
+        </motion.div>
+      )}
+
+      {isComplete && (
+        <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="mt-6 flex flex-col items-center gap-2"
+          transition={{ delay: 0.7, duration: 0.6 }}
+          className="mt-4 flex flex-col items-center gap-2"
         >
           <span className="text-text-muted text-xs">
             Try typing <span className="text-accent-green">help</span> or a section name
