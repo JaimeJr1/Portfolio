@@ -50,6 +50,20 @@ function ProjectCard({ project, index }) {
           <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-bg-primary/80 to-transparent pointer-events-none" />
         </div>
 
+        {project.metrics && (
+          <div className="flex flex-wrap gap-2 mb-3">
+            {project.metrics.map((m, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-1.5 text-xs px-2 py-1 rounded bg-accent-green/10 border border-accent-green/20"
+              >
+                <span className="text-accent-green font-bold">{m.value}</span>
+                <span className="text-text-muted">{m.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
         <div className="text-text-muted text-xs mb-3">
           <span className="text-accent-green">$</span> cat README.md
         </div>
@@ -69,14 +83,16 @@ function ProjectCard({ project, index }) {
         </div>
 
         <div className="flex gap-4 text-xs pt-3 border-t border-border">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent-cyan hover:underline"
-          >
-            <span className="text-accent-green">$</span> open --github
-          </a>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent-cyan hover:underline"
+            >
+              <span className="text-accent-green">$</span> open --github
+            </a>
+          )}
           {project.live && (
             <a
               href={project.live}
@@ -101,7 +117,7 @@ export default function Projects() {
       <SectionHeader command="ls ~/projects/" id="projects" />
 
       <p className="text-text-muted text-sm text-center mb-8 -mt-4">
-        A collection of things I've built — from full-stack apps to CLI tools.
+        Featured builds — from AI systems to embedded hardware.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
-const SECTION_IDS = ['about', 'projects', 'achievements', 'resume', 'college', 'contact']
+const SECTION_IDS = ['about', 'projects', 'resume', 'contact']
 
 const shortcuts = [
   { keys: '?', description: 'Toggle this help' },
-  { keys: '1-6', description: 'Jump to section' },
+  { keys: '1-4', description: 'Jump to section' },
   { keys: '0', description: 'Scroll to top' },
   { keys: '/', description: 'Focus terminal input' },
 ]

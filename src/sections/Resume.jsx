@@ -64,6 +64,21 @@ export default function Resume() {
             </div>
           </div>
 
+          {/* Highlights */}
+          {resume.highlights && (
+            <div className="mb-6">
+              <div className="text-accent-purple font-semibold mb-3">=== HIGHLIGHTS ===</div>
+              <div className="space-y-2">
+                {resume.highlights.map((h, i) => (
+                  <div key={i} className="text-text-muted text-sm flex gap-2">
+                    <span className="text-accent-yellow select-none">★</span>
+                    <span>{h}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Skills */}
           <div className="mb-6">
             <div className="text-accent-purple font-semibold mb-3">=== SKILLS ===</div>

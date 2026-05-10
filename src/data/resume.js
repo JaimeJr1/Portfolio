@@ -17,7 +17,10 @@ export const resume = {
       company: 'Plix',
       date: 'Apr 2026 - Present',
       bullets: [
-        'Full-time systems and infrastructure engineering role in San Francisco Bay Area',
+        'Reduced battery drain from ~20%/hr to ~11%/hr by investigating CPU threading strategies for concurrent on-device Whisper inference and video recording on Android (MediaTek Dimensity 720)',
+        'Bypassed Android\'s EAS scheduler via JNI sched_setaffinity to pin threads to efficiency cores, eliminating cross-core thrashing between Whisper and MediaCodec pipelines',
+        'Designed controlled battery and latency experiments across 5+ threading configs with statistical analysis, identifying 6-little-core setup as optimal — ~530 ms median latency at ~5.7% drain per 30 min',
+        'Profiled CPU scheduling and thermal behavior using Perfetto traces, characterizing thermal envelope from 37°C idle to 63°C sustained workload',
       ],
     },
     {
@@ -62,6 +65,10 @@ export const resume = {
         'Enhanced research team productivity by delivering daily presentations to senior researchers',
       ],
     },
+  ],
+  highlights: [
+    'Nova 111 Student List — Top 10 Computer Science in Spain (2026)',
+    'Elected CS Representative — GT Student Government (2025)',
   ],
   skills: {
     languages: ['Python', 'Java', 'C++', 'C#', 'C', 'JavaScript', 'HTML/CSS'],
