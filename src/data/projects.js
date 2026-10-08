@@ -58,6 +58,12 @@ export const projects = [
     tech: ['Python', 'NumPy', 'JAX', 'Negamax', 'HMM'],
     github: null,
     live: null,
+    image: {
+      src: 'images/projects/ratonperez-board.png',
+      thumb: 'images/projects/ratonperez-board-thumb.jpg',
+      alt: 'RatonPerez mid-match on the bytefight.org board — the agent tracks the hidden rat over a 64-cell Bayesian belief grid while collecting cheese',
+      label: 'game-board.png',
+    },
     status: 'active',
     featured: true,
     color: '#d29922',
