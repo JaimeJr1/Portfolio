@@ -33,13 +33,13 @@ export default function ExperienceBar() {
           {items.map((company, i) => (
             <div
               key={i}
-              className="shrink-0 flex items-center gap-2.5 px-5 py-2.5 rounded-lg border border-border/60 bg-bg-terminal/40 hover:border-accent-green/40 transition-colors duration-300"
+              className="shrink-0 flex items-center gap-2.5 px-6 py-3 rounded-lg border border-accent-green/20 bg-bg-terminal/60 hover:border-accent-green/60 transition-colors duration-300"
             >
-              <span className="text-accent-green text-xs select-none">▸</span>
-              <span className="text-text-primary text-sm font-medium whitespace-nowrap">
+              <span className="text-accent-green text-sm select-none">▸</span>
+              <span className="text-text-primary text-base font-semibold whitespace-nowrap">
                 {company.name}
               </span>
-              <span className="text-text-muted text-xs whitespace-nowrap hidden sm:inline">
+              <span className="text-text-muted text-sm whitespace-nowrap hidden sm:inline">
                 {company.label}
               </span>
             </div>

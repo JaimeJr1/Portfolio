@@ -231,7 +231,7 @@ export default function Hero() {
           </span>
         </div>
 
-        <div className="h-5 overflow-hidden text-xs sm:text-sm">
+        <div className="h-6 overflow-hidden text-sm sm:text-base">
           <AnimatePresence mode="wait">
             <motion.div
               key={statIndex}
@@ -242,7 +242,9 @@ export default function Hero() {
             >
               <span className="text-accent-green">$</span>{' '}
               <span className="text-text-muted">tail -f impact.log →</span>{' '}
-              <span className="text-accent-cyan">{PROOF_STATS[statIndex]}</span>
+              <span className="text-accent-cyan font-semibold [text-shadow:0_0_12px_rgba(88,166,255,0.45)]">
+                {PROOF_STATS[statIndex]}
+              </span>
             </motion.div>
           </AnimatePresence>
         </div>

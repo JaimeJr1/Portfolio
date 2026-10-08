@@ -4,6 +4,7 @@ import TerminalWindow from '../components/terminal/TerminalWindow'
 import SectionHeader from '../components/terminal/SectionHeader'
 import CommandOutput from '../components/terminal/CommandOutput'
 import Badge from '../components/ui/Badge'
+import { useCountUp } from '../hooks/useCountUp'
 
 const info = [
   { label: 'Name', value: 'Jaime Alonso' },
@@ -21,13 +22,26 @@ const skills = [
 ]
 
 const quickStats = [
-  { label: 'gpa', value: '4.0' },
-  { label: 'research_labs', value: '3' },
-  { label: 'devices_shipped_to', value: '2,500+' },
-  { label: 'infra_savings', value: '$500K/yr' },
-  { label: 'languages', value: '3' },
+  { label: 'gpa', target: 40, render: (c) => (c / 10).toFixed(1) },
+  { label: 'research_labs', target: 3 },
+  { label: 'devices_shipped_to', target: 2500, render: (c) => `${c.toLocaleString()}+` },
+  { label: 'infra_savings', target: 500, render: (c) => `$${c}K/yr` },
+  { label: 'languages', target: 3 },
   { label: 'cold_pressed_oj', value: '∞' },
 ]
+
+function StatValue({ stat }) {
+  const { count, ref } = useCountUp(stat.target ?? 0, 1500)
+
+  if (stat.value) {
+    return <span className="text-accent-cyan font-semibold">{stat.value}</span>
+  }
+  return (
+    <span ref={ref} className="text-accent-cyan font-semibold">
+      {stat.render ? stat.render(count) : count}
+    </span>
+  )
+}
 
 export default function About() {
   const [imgError, setImgError] = useState(false)
@@ -71,7 +85,7 @@ export default function About() {
                 {quickStats.map((stat) => (
                   <div key={stat.label} className="text-xs">
                     <span className="text-text-muted">{stat.label}:</span>{' '}
-                    <span className="text-accent-cyan font-semibold">{stat.value}</span>
+                    <StatValue stat={stat} />
                   </div>
                 ))}
               </div>
