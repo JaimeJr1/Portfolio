@@ -115,7 +115,7 @@ export default function Resume() {
         {/* Download Button */}
         <div className="mt-6 flex justify-center">
           <a
-            href="/Portfolio/resume.pdf"
+            href={`${import.meta.env.BASE_URL}resume.pdf`}
             download
             className="inline-flex items-center gap-2 px-6 py-3 border border-accent-green text-accent-green rounded-lg hover:bg-accent-green hover:text-bg-primary transition-all duration-300 text-sm font-medium"
           >
