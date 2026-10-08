@@ -161,11 +161,24 @@ export default function Projects() {
             onClick={() => setLightbox(null)}
           >
             <figure className="max-w-4xl w-full">
-              <img
-                src={`${import.meta.env.BASE_URL}${lightbox.image.src}`}
-                alt={lightbox.image.alt}
-                className="w-full max-h-[80vh] object-contain rounded border border-border"
-              />
+              {lightbox.image.type === 'video' ? (
+                <video
+                  src={`${import.meta.env.BASE_URL}${lightbox.image.src}`}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  onClick={(e) => e.stopPropagation()}
+                  className="w-full max-h-[80vh] object-contain rounded border border-border cursor-default"
+                />
+              ) : (
+                <img
+                  src={`${import.meta.env.BASE_URL}${lightbox.image.src}`}
+                  alt={lightbox.image.alt}
+                  className="w-full max-h-[80vh] object-contain rounded border border-border"
+                />
+              )}
               <figcaption className="text-center text-text-muted text-xs mt-3">
                 <span className="text-accent-green">$</span> {lightbox.image.label} —{' '}
                 {lightbox.title}

@@ -98,6 +98,12 @@ export const projects = [
     tech: ['C++', 'Arduino', 'MIT App Inventor', 'Hardware'],
     github: 'https://github.com/JaimeJr1/Solar-Oriented-PV-Cell-Code',
     live: null,
+    image: {
+      src: 'images/projects/solar-tracker.mp4',
+      type: 'video',
+      alt: 'Solar tracker hardware following the sun — panel, servo mount, and Arduino control board',
+      label: 'tracker-demo.mp4',
+    },
     status: 'active',
     featured: false,
     color: '#d29922',
