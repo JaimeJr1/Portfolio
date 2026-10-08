@@ -246,6 +246,39 @@ export default function Hero() {
             </motion.div>
           </AnimatePresence>
         </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-3 mt-2">
+          <button
+            onClick={() => scrollToSection('projects')}
+            className="px-5 py-2.5 rounded-lg bg-accent-green text-bg-primary text-sm font-semibold hover:brightness-110 transition-all cursor-pointer shadow-[0_0_20px_rgba(63,185,80,0.35)]"
+          >
+            $ open projects/
+          </button>
+          <button
+            onClick={() => scrollToSection('resume')}
+            className="px-5 py-2.5 rounded-lg border border-border text-text-primary text-sm hover:border-accent-green hover:text-accent-green transition-colors cursor-pointer"
+          >
+            $ cat resume.txt
+          </button>
+        </div>
+
+        <motion.button
+          onClick={() => scrollToSection('projects')}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.4, ease: 'easeInOut' }}
+          aria-label="Scroll to projects"
+          className="mt-6 w-11 h-11 rounded-full border-2 border-accent-green/60 flex items-center justify-center text-accent-green hover:bg-accent-green/10 transition-colors cursor-pointer shadow-[0_0_18px_rgba(63,185,80,0.3)]"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            className="w-5 h-5"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </motion.button>
       </motion.div>
 
       {isComplete && (
@@ -258,13 +291,6 @@ export default function Hero() {
           <span className="text-text-muted text-xs">
             Try typing <span className="text-accent-green">help</span> or a section name
           </span>
-          <motion.span
-            animate={{ y: [0, 6, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="inline-block text-text-muted text-sm"
-          >
-            scroll down
-          </motion.span>
         </motion.div>
       )}
     </section>
