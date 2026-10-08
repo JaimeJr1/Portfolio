@@ -69,12 +69,33 @@ export default function Hero() {
     'Welcome to my portfolio',
   ], [])
 
-  const { displayedLines, isComplete } = useTypingEffect({
+  // Replay the typed intro only once per browser session; repeat visits
+  // land on the finished hero instantly.
+  const [skipIntro] = useState(() => {
+    try {
+      return sessionStorage.getItem('hero-intro-seen') === '1'
+    } catch {
+      return false
+    }
+  })
+
+  useEffect(() => {
+    try {
+      sessionStorage.setItem('hero-intro-seen', '1')
+    } catch {
+      // private browsing — intro just replays
+    }
+  }, [])
+
+  const typing = useTypingEffect({
     lines,
     typingSpeed: 18,
     lineDelay: 120,
     startDelay: 300,
   })
+
+  const displayedLines = skipIntro ? lines : typing.displayedLines
+  const isComplete = skipIntro || typing.isComplete
 
   const [statIndex, setStatIndex] = useState(0)
 
@@ -154,7 +175,7 @@ export default function Hero() {
   return (
     <section className="min-h-[88vh] flex flex-col items-center justify-center px-4 pt-20 pb-10">
       <motion.div
-        initial={{ scale: 1.08, y: 28 }}
+        initial={skipIntro ? { scale: 1, y: 0 } : { scale: 1.08, y: 28 }}
         animate={isComplete ? { scale: 1, y: 0 } : { scale: 1.08, y: 28 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="w-full max-w-2xl"
@@ -234,7 +255,7 @@ export default function Hero() {
       {isComplete && (
       <motion.div
         variants={cascade}
-        initial="hidden"
+        initial={skipIntro ? 'show' : 'hidden'}
         animate="show"
         className="mt-8 flex flex-col items-center gap-4"
       >
