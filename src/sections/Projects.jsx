@@ -181,7 +181,27 @@ export default function Projects() {
             className="fixed inset-0 z-50 bg-bg-primary/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out"
             onClick={() => setLightbox(null)}
           >
-            <figure className="max-w-4xl w-full">
+            <motion.div
+              initial={{ scale: 0.96, y: 10 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.96, y: 10 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-lg border border-border bg-bg-terminal cursor-default shadow-2xl"
+            >
+              <div className="sticky top-0 flex items-center justify-between px-4 py-2.5 bg-bg-titlebar border-b border-border">
+                <span className="text-text-muted text-sm">
+                  <span className="text-accent-green">$</span> open {lightbox.image.label} —{' '}
+                  {lightbox.filename}
+                </span>
+                <button
+                  onClick={() => setLightbox(null)}
+                  className="text-text-muted hover:text-accent-red transition-colors text-xs cursor-pointer"
+                >
+                  [esc] close ✕
+                </button>
+              </div>
+
               {lightbox.image.type === 'video' ? (
                 <video
                   src={`${import.meta.env.BASE_URL}${lightbox.image.src}`}
@@ -190,22 +210,71 @@ export default function Projects() {
                   loop
                   playsInline
                   controls
-                  onClick={(e) => e.stopPropagation()}
-                  className="w-full max-h-[80vh] object-contain rounded border border-border cursor-default"
+                  className="w-full max-h-[55vh] object-contain bg-bg-primary"
                 />
               ) : (
                 <img
                   src={`${import.meta.env.BASE_URL}${lightbox.image.src}`}
                   alt={lightbox.image.alt}
-                  className="w-full max-h-[80vh] object-contain rounded border border-border"
+                  className="w-full max-h-[55vh] object-contain bg-bg-primary"
                 />
               )}
-              <figcaption className="text-center text-text-muted text-xs mt-3">
-                <span className="text-accent-green">$</span> {lightbox.image.label} —{' '}
-                {lightbox.title}
-                <span className="ml-3 text-text-muted/60">[esc or click to close]</span>
-              </figcaption>
-            </figure>
+
+              <div className="p-5">
+                {lightbox.metrics && (
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {lightbox.metrics.map((m, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center gap-1.5 text-xs px-2 py-1 rounded bg-accent-green/10 border border-accent-green/20"
+                      >
+                        <span className="text-accent-green font-bold">{m.value}</span>
+                        <span className="text-text-muted">{m.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <h3 className="text-accent-purple text-lg font-semibold mb-2">
+                  {lightbox.title}
+                </h3>
+
+                <p className="text-text-primary text-sm leading-relaxed mb-4">
+                  {lightbox.description}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {lightbox.tech.map((t) => (
+                    <Badge key={t}>{t}</Badge>
+                  ))}
+                </div>
+
+                {(lightbox.github || lightbox.live) && (
+                  <div className="flex gap-4 text-xs pt-3 border-t border-border">
+                    {lightbox.github && (
+                      <a
+                        href={lightbox.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-accent-cyan hover:underline"
+                      >
+                        <span className="text-accent-green">$</span> open --github
+                      </a>
+                    )}
+                    {lightbox.live && (
+                      <a
+                        href={lightbox.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-accent-cyan hover:underline"
+                      >
+                        <span className="text-accent-green">$</span> open --live
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
