@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import TerminalWindow from '../components/terminal/TerminalWindow'
 import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
+import Highlight from '../components/ui/Highlight'
 import { projects } from '../data/projects'
 
 const statusColors = {
@@ -97,7 +98,7 @@ function ProjectCard({ project, index, onViewImage }) {
         </h3>
 
         <p className="text-text-primary text-sm leading-relaxed mb-4">
-          {project.description}
+          <Highlight>{project.description}</Highlight>
         </p>
 
         <div className="flex flex-wrap gap-1.5 mb-4">
@@ -241,7 +242,7 @@ export default function Projects() {
                 </h3>
 
                 <p className="text-text-primary text-sm leading-relaxed mb-4">
-                  {lightbox.description}
+                  <Highlight>{lightbox.description}</Highlight>
                 </p>
 
                 <div className="flex flex-wrap gap-1.5 mb-4">

@@ -2,7 +2,23 @@ import { motion } from 'framer-motion'
 import TerminalWindow from '../components/terminal/TerminalWindow'
 import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
+import Highlight from '../components/ui/Highlight'
 import { resume } from '../data/resume'
+
+// Renders an achievement bullet like a git-diff line: green "+" prefix,
+// leading verb in green, metrics highlighted.
+function DiffBullet({ text }) {
+  const [verb, ...rest] = text.split(' ')
+  return (
+    <li className="text-text-primary text-sm leading-relaxed flex gap-2">
+      <span className="text-accent-green select-none">+</span>
+      <span>
+        <span className="text-accent-green font-semibold">{verb}</span>{' '}
+        <Highlight>{rest.join(' ')}</Highlight>
+      </span>
+    </li>
+  )
+}
 
 export default function Resume() {
   return (
@@ -51,12 +67,9 @@ export default function Resume() {
                     {exp.company}
                   </div>
                   <div className="text-text-muted text-sm">{exp.date}</div>
-                  <ul className="mt-2 space-y-1">
+                  <ul className="mt-2 space-y-1.5">
                     {exp.bullets.map((b, j) => (
-                      <li key={j} className="text-text-muted text-sm flex gap-2">
-                        <span className="text-accent-green select-none">-</span>
-                        <span>{b}</span>
-                      </li>
+                      <DiffBullet key={j} text={b} />
                     ))}
                   </ul>
                 </div>
@@ -70,9 +83,9 @@ export default function Resume() {
               <div className="text-accent-purple font-semibold mb-3">=== HIGHLIGHTS ===</div>
               <div className="space-y-2">
                 {resume.highlights.map((h, i) => (
-                  <div key={i} className="text-text-muted text-sm flex gap-2">
+                  <div key={i} className="text-text-primary text-sm flex gap-2">
                     <span className="text-accent-yellow select-none">★</span>
-                    <span>{h}</span>
+                    <Highlight>{h}</Highlight>
                   </div>
                 ))}
               </div>

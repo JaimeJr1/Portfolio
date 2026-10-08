@@ -4,6 +4,7 @@ import TerminalWindow from '../components/terminal/TerminalWindow'
 import SectionHeader from '../components/terminal/SectionHeader'
 import CommandOutput from '../components/terminal/CommandOutput'
 import Badge from '../components/ui/Badge'
+import Highlight from '../components/ui/Highlight'
 import { useCountUp } from '../hooks/useCountUp'
 
 const info = [
@@ -94,12 +95,14 @@ export default function About() {
 
           <div className="mt-6 border-t border-border pt-5 space-y-4">
             <p className="text-text-primary leading-relaxed">
-              CS student at Georgia Tech researching on-device AI at the LLAMAS Lab. Spent summer
-              2026 at Plix AI (Sequoia- and a16z-backed body cameras), shipping real-time incident
-              detection to 2,500+ deployed devices and accelerating on-device speech recognition ~10x
-              to cut ~$500K/yr in cloud costs. Previously applied ML to healthcare diagnostics at
-              GTRI with 97.25% precision. Trilingual, Nova 111 honoree (top 10 CS in Spain), and
-              always looking for the next hard problem to break down and solve.
+              <Highlight>
+                CS student at Georgia Tech researching on-device AI at the LLAMAS Lab. Spent summer
+                2026 at Plix AI (Sequoia- and a16z-backed body cameras), shipping real-time incident
+                detection to 2,500+ deployed devices and accelerating on-device speech recognition
+                ~10x to cut ~$500K/yr in cloud costs. Previously applied ML to healthcare diagnostics
+                at GTRI with 97.25% precision. Trilingual, Nova 111 honoree (top 10 CS in Spain), and
+                always looking for the next hard problem to break down and solve.
+              </Highlight>
             </p>
           </div>
 
