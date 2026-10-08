@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 const companies = [
@@ -10,6 +11,34 @@ const companies = [
 
 export default function ExperienceBar() {
   const items = [...companies, ...companies]
+  const trackRef = useRef(null)
+
+  // Scale and glow each chip by its proximity to the container's center as
+  // the CSS marquee animation moves the track underneath.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let raf
+    const tick = () => {
+      const track = trackRef.current
+      if (track) {
+        const parent = track.parentElement.getBoundingClientRect()
+        const centerX = parent.left + parent.width / 2
+        for (const chip of track.children) {
+          const r = chip.getBoundingClientRect()
+          const d = Math.abs(r.left + r.width / 2 - centerX)
+          const p = Math.max(0, 1 - d / 280)
+          chip.style.transform = `scale(${1 + 0.22 * p})`
+          chip.style.borderColor = `rgba(63, 185, 80, ${0.2 + 0.6 * p})`
+          chip.style.boxShadow =
+            p > 0.4 ? `0 0 ${Math.round(20 * p)}px rgba(63, 185, 80, 0.3)` : 'none'
+          chip.style.zIndex = p > 0.4 ? '1' : '0'
+        }
+      }
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [])
 
   return (
     <motion.div
@@ -29,7 +58,7 @@ export default function ExperienceBar() {
         <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-bg-primary to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-bg-primary to-transparent z-10 pointer-events-none" />
 
-        <div className="marquee-track gap-6">
+        <div ref={trackRef} className="marquee-track gap-6">
           {items.map((company, i) => (
             <div
               key={i}
