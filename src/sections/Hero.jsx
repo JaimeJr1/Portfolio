@@ -85,7 +85,7 @@ export default function Hero() {
 
   useEffect(() => {
     if (isComplete && inputRef.current) {
-      inputRef.current.focus()
+      inputRef.current.focus({ preventScroll: true })
     }
   }, [isComplete])
 
