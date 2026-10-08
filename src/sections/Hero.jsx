@@ -37,6 +37,16 @@ Tools:      Git, GitHub Actions, CircuitSim, MySQL, GCP`,
        ╚══════════════╝      Vamos!`,
 }
 
+const cascade = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.18, delayChildren: 0.25 } },
+}
+
+const cascadeItem = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+}
+
 const PROOF_STATS = [
   '~$500K/yr cloud costs eliminated @ Plix AI',
   'shipped on 2,500+ production body cameras',
@@ -143,7 +153,13 @@ export default function Hero() {
 
   return (
     <section className="min-h-[88vh] flex flex-col items-center justify-center px-4 pt-20 pb-10">
-      <TerminalWindow title="welcome.sh" className="w-full max-w-2xl" clickToMaximize={false}>
+      <motion.div
+        initial={{ scale: 1.08, y: 28 }}
+        animate={isComplete ? { scale: 1, y: 0 } : { scale: 1.08, y: 28 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="w-full max-w-2xl"
+      >
+      <TerminalWindow title="welcome.sh" className="w-full" clickToMaximize={false}>
         <div
           className="space-y-1 cursor-text min-h-[10.5rem]"
           onClick={() => inputRef.current?.focus()}
@@ -213,25 +229,33 @@ export default function Hero() {
           )}
         </div>
       </TerminalWindow>
+      </motion.div>
 
+      {isComplete && (
       <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.7 }}
+        variants={cascade}
+        initial="hidden"
+        animate="show"
         className="mt-8 flex flex-col items-center gap-4"
       >
-        <h1 className="text-text-primary text-lg sm:text-xl md:text-2xl font-semibold text-center leading-snug max-w-lg">
+        <motion.h1
+          variants={cascadeItem}
+          className="text-text-primary text-lg sm:text-xl md:text-2xl font-semibold text-center leading-snug max-w-lg"
+        >
           Building intelligent systems —{' '}
           <span className="text-accent-green">from edge devices to the cloud</span>.
-        </h1>
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent-green/30 bg-accent-green/5">
+        </motion.h1>
+        <motion.div
+          variants={cascadeItem}
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent-green/30 bg-accent-green/5"
+        >
           <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
           <span className="text-accent-green text-xs font-medium">
             Open to Summer 2027 internships
           </span>
-        </div>
+        </motion.div>
 
-        <div className="h-6 overflow-hidden text-sm sm:text-base">
+        <motion.div variants={cascadeItem} className="h-6 overflow-hidden text-sm sm:text-base">
           <AnimatePresence mode="wait">
             <motion.div
               key={statIndex}
@@ -247,9 +271,12 @@ export default function Hero() {
               </span>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 mt-2">
+        <motion.div
+          variants={cascadeItem}
+          className="flex flex-wrap items-center justify-center gap-3 mt-2"
+        >
           <button
             onClick={() => scrollToSection('projects')}
             className="px-5 py-2.5 rounded-lg bg-accent-green text-bg-primary text-sm font-semibold hover:brightness-110 transition-all cursor-pointer shadow-[0_0_20px_rgba(63,185,80,0.35)]"
@@ -262,26 +289,29 @@ export default function Hero() {
           >
             $ cat resume.txt
           </button>
-        </div>
+        </motion.div>
 
-        <motion.button
-          onClick={() => scrollToSection('projects')}
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.4, ease: 'easeInOut' }}
-          aria-label="Scroll to projects"
-          className="mt-6 w-11 h-11 rounded-full border-2 border-accent-green/60 flex items-center justify-center text-accent-green hover:bg-accent-green/10 transition-colors cursor-pointer shadow-[0_0_18px_rgba(63,185,80,0.3)]"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            className="w-5 h-5"
+        <motion.div variants={cascadeItem}>
+          <motion.button
+            onClick={() => scrollToSection('projects')}
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 1.4, ease: 'easeInOut' }}
+            aria-label="Scroll to projects"
+            className="mt-6 w-11 h-11 rounded-full border-2 border-accent-green/60 flex items-center justify-center text-accent-green hover:bg-accent-green/10 transition-colors cursor-pointer shadow-[0_0_18px_rgba(63,185,80,0.3)]"
           >
-            <path d="m6 9 6 6 6-6" />
-          </svg>
-        </motion.button>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              className="w-5 h-5"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </motion.button>
+        </motion.div>
       </motion.div>
+      )}
 
       {isComplete && (
         <motion.div
