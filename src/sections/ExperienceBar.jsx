@@ -26,8 +26,8 @@ export default function ExperienceBar() {
         for (const chip of track.children) {
           const r = chip.getBoundingClientRect()
           const d = Math.abs(r.left + r.width / 2 - centerX)
-          const p = Math.max(0, 1 - d / 280)
-          chip.style.transform = `scale(${1 + 0.22 * p})`
+          const p = Math.max(0, 1 - d / 190)
+          chip.style.transform = `scale(${1 + 0.32 * p})`
           chip.style.borderColor = `rgba(63, 185, 80, ${0.2 + 0.6 * p})`
           chip.style.boxShadow =
             p > 0.4 ? `0 0 ${Math.round(20 * p)}px rgba(63, 185, 80, 0.3)` : 'none'
@@ -58,7 +58,7 @@ export default function ExperienceBar() {
         <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-bg-primary to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-bg-primary to-transparent z-10 pointer-events-none" />
 
-        <div ref={trackRef} className="marquee-track gap-6">
+        <div ref={trackRef} className="marquee-track gap-12 py-4">
           {items.map((company, i) => (
             <div
               key={i}
