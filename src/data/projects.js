@@ -31,6 +31,7 @@ export const projects = [
     live: null,
     image: {
       src: 'images/projects/pipelined-datapath.png',
+      thumb: 'images/projects/pipelined-datapath-thumb.png',
       alt: 'Full 5-stage pipelined datapath built in CircuitSim — FBUF/DBUF/EBUF/MBUF pipeline buffers, dual-ported register file, forwarding unit, and control ROM',
       label: 'datapath.png',
     },
@@ -101,6 +102,7 @@ export const projects = [
     image: {
       src: 'images/projects/solar-tracker.mp4',
       type: 'video',
+      thumb: 'images/projects/solar-tracker-thumb.jpg',
       alt: 'Solar tracker hardware following the sun — panel, servo mount, and Arduino control board',
       label: 'tracker-demo.mp4',
     },

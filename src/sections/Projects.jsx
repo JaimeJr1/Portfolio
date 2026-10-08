@@ -39,16 +39,37 @@ function ProjectCard({ project, index, onViewImage }) {
             </span>
           </span>
         }
-        className="h-full hover:border-accent-green hover:shadow-[0_0_20px_rgba(63,185,80,0.1)] transition-all duration-300"
+        className="h-full group hover:border-accent-green hover:shadow-[0_0_20px_rgba(63,185,80,0.1)] transition-all duration-300"
       >
-        {/* Terminal preview block */}
-        <div className="relative w-full h-28 rounded border border-border/50 bg-bg-primary/50 p-3 mb-4 overflow-hidden font-mono text-xs">
+        {/* Terminal preview block — hovering reveals the project image when one exists */}
+        <div
+          className={`relative w-full h-28 rounded border border-border/50 bg-bg-primary/50 p-3 mb-4 overflow-hidden font-mono text-xs ${
+            project.image ? 'cursor-zoom-in' : ''
+          }`}
+          onClick={
+            project.image
+              ? (e) => {
+                  e.stopPropagation()
+                  onViewImage(project)
+                }
+              : undefined
+          }
+        >
           {project.preview.map((line, i) => (
             <div key={i} className={i === 0 ? 'text-accent-green' : 'text-text-muted'}>
               {line}
             </div>
           ))}
           <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-bg-primary/80 to-transparent pointer-events-none" />
+          {project.image?.thumb && (
+            <img
+              src={`${import.meta.env.BASE_URL}${project.image.thumb}`}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            />
+          )}
         </div>
 
         {project.metrics && (
