@@ -2,7 +2,7 @@ export const projects = [
   {
     title: 'On-Device Whisper Inference Engine',
     filename: 'whisper-edge.sh',
-    description: 'Research at Georgia Tech\'s LLAMAS Lab on real-time speech recognition for wearables. A C++/Kotlin benchmarking harness tunes CPU core affinities, thread counts, and context windows — using raw Linux syscalls (sched_setaffinity) to bypass Android NDK limits — alongside a concurrent H.265 video + transcription pipeline.',
+    description: 'Research at Georgia Tech\'s LLAMAS Lab on real-time speech recognition for wearables. A C++/Kotlin benchmarking harness tunes CPU core affinities, thread counts, and context windows — using **raw Linux syscalls to bypass Android NDK limits** — alongside a concurrent H.265 video + transcription pipeline.',
     tech: ['C++', 'Kotlin', 'GGML', 'Linux syscalls', 'ARM big.LITTLE'],
     github: null,
     live: null,
@@ -25,7 +25,7 @@ export const projects = [
   {
     title: '5-Stage Pipelined Processor',
     filename: 'pipelined-cpu.sh',
-    description: 'A pipelined processor (IF/ID/EX/MEM/WB) designed from scratch in CircuitSim with a dual-ported register file. Implements full hazard handling beyond the course baseline — data forwarding for RAW hazards, load-use detection with automatic stalling, and branch-mispredict squashing.',
+    description: 'A pipelined processor (IF/ID/EX/MEM/WB) designed **from scratch in CircuitSim** with a dual-ported register file. Implements **full hazard handling beyond the course baseline** — data forwarding for RAW hazards, load-use detection with automatic stalling, and branch-mispredict squashing.',
     tech: ['CircuitSim', 'Python', 'Assembly', 'Digital Logic'],
     github: null,
     live: null,
@@ -54,7 +54,7 @@ export const projects = [
   {
     title: 'RatonPerez — Game AI Tournament Agent',
     filename: 'ratonperez.sh',
-    description: 'Game-playing agent that placed top 20 in the live bytefight.org tournament. Combines a hidden Markov model with Bayesian belief updates over a 64-cell opponent distribution and a negamax engine with principal variation search, alpha-beta pruning, Zobrist hashing, and late-move reductions.',
+    description: 'Game-playing agent that placed **top 20 in the live bytefight.org tournament**. Combines a hidden Markov model with Bayesian belief updates over a 64-cell opponent distribution and a negamax engine with principal variation search, alpha-beta pruning, Zobrist hashing, and late-move reductions.',
     tech: ['Python', 'NumPy', 'JAX', 'Negamax', 'HMM'],
     github: null,
     live: null,
@@ -95,7 +95,7 @@ export const projects = [
   {
     title: 'Solar-Oriented PV Cell System',
     filename: 'solar-pv.sh',
-    description: 'Solar PV system with automated sun tracking, built from scratch as team software lead. Companion mobile app connects via Bluetooth for real-time performance monitoring.',
+    description: 'Solar PV system with automated sun tracking, built from scratch as **team software lead**. Companion mobile app connects via Bluetooth for real-time performance monitoring.',
     tech: ['C++', 'Arduino', 'MIT App Inventor', 'Hardware'],
     github: 'https://github.com/JaimeJr1/Solar-Oriented-PV-Cell-Code',
     live: null,

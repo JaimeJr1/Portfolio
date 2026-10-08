@@ -98,10 +98,11 @@ export default function About() {
               <Highlight>
                 CS student at Georgia Tech researching on-device AI at the LLAMAS Lab. Spent summer
                 2026 at Plix AI (Sequoia- and a16z-backed body cameras), shipping real-time incident
-                detection to 2,500+ deployed devices and accelerating on-device speech recognition
-                ~10x to cut ~$500K/yr in cloud costs. Previously applied ML to healthcare diagnostics
-                at GTRI with 97.25% precision. Trilingual, Nova 111 honoree (top 10 CS in Spain), and
-                always looking for the next hard problem to break down and solve.
+                detection to **2,500+ deployed devices** and accelerating on-device speech
+                recognition ~10x to cut **~$500K/yr in cloud costs**. Previously applied ML to
+                healthcare diagnostics at GTRI with 97.25% precision. Trilingual, **Nova 111 honoree
+                (top 10 CS in Spain)**, and always looking for the next hard problem to break down
+                and solve.
               </Highlight>
             </p>
           </div>
