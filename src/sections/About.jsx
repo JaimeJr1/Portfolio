@@ -9,22 +9,22 @@ const info = [
   { label: 'Name', value: 'Jaime Alonso' },
   { label: 'Location', value: 'Atlanta, GA' },
   { label: 'University', value: 'Georgia Institute of Technology' },
-  { label: 'Major', value: 'CS — Intelligence & Info Internetworks' },
-  { label: 'Current', value: 'Systems & Infrastructure Intern @ Plix' },
+  { label: 'Major', value: 'CS — Systems Architecture & Info Internetworks' },
+  { label: 'Current', value: 'Undergraduate Researcher @ LLAMAS Lab' },
   { label: 'Languages', value: 'English, Spanish (Native), French (Fluent)' },
 ]
 
 const skills = [
-  'Python', 'Java', 'C++', 'C', 'JavaScript',
-  'PyTorch', 'Scikit-learn', 'Pandas', 'NumPy', 'XGBoost',
-  'Unity', 'Streamlit', 'Django', 'Git', 'GCP', 'Docker',
+  'C++', 'C', 'Python', 'Kotlin', 'Java',
+  'POSIX threads', 'Linux scheduling', 'GGML', 'Docker', 'gRPC',
+  'PyTorch', 'JAX', 'XGBoost', 'Git', 'GitHub Actions', 'GCP',
 ]
 
 const quickStats = [
   { label: 'gpa', value: '4.0' },
   { label: 'research_labs', value: '3' },
-  { label: 'internships', value: '3' },
-  { label: 'technologies', value: '15+' },
+  { label: 'devices_shipped_to', value: '2,500+' },
+  { label: 'infra_savings', value: '$500K/yr' },
   { label: 'languages', value: '3' },
   { label: 'cups_of_coffee', value: '∞' },
 ]
@@ -49,7 +49,7 @@ export default function About() {
               <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-accent-green/60 shadow-[0_0_20px_rgba(63,185,80,0.15)] bg-bg-primary">
                 {!imgError ? (
                   <img
-                    src={`${import.meta.env.BASE_URL}images/headshot.jpg`}
+                    src={`${import.meta.env.BASE_URL}images/headshot.png`}
                     alt="Jaime Alonso"
                     className="w-full h-full object-cover"
                     onError={() => setImgError(true)}
@@ -80,11 +80,12 @@ export default function About() {
 
           <div className="mt-6 border-t border-border pt-5 space-y-4">
             <p className="text-text-primary leading-relaxed">
-              CS student at Georgia Tech researching AI systems and edge computing at the LLAMAS Lab.
-              Currently building infrastructure at Plix in San Francisco. Previously applied ML at
-              MIT Energy Initiative and GTRI — from optimizing energy grids to achieving 97.25%
-              precision on healthcare diagnostics. Trilingual, Nova 111 honoree (top 10 CS in Spain),
-              and always looking for the next hard problem to break down and solve.
+              CS student at Georgia Tech researching on-device AI at the LLAMAS Lab. Spent summer
+              2026 at Plix AI (Sequoia- and a16z-backed body cameras), shipping real-time incident
+              detection to 2,500+ deployed devices and accelerating on-device speech recognition ~10x
+              to cut ~$500K/yr in cloud costs. Previously applied ML to healthcare diagnostics at
+              GTRI with 97.25% precision. Trilingual, Nova 111 honoree (top 10 CS in Spain), and
+              always looking for the next hard problem to break down and solve.
             </p>
           </div>
 

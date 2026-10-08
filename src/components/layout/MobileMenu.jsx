@@ -1,5 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { NAV_LINKS } from '../../utils/constants'
+import { socialLinks } from '../../data/socialLinks'
+import { GitHubIcon, LinkedInIcon } from '../ui/icons'
+
+const menuIcons = { github: GitHubIcon, linkedin: LinkedInIcon }
 
 export default function MobileMenu({ open, onClose, activeId }) {
   return (
@@ -40,6 +44,34 @@ export default function MobileMenu({ open, onClose, activeId }) {
               </a>
             )
           })}
+
+          <div className="flex items-center gap-6 mt-2 pt-6 border-t border-border">
+            {socialLinks
+              .filter((link) => menuIcons[link.icon])
+              .map((link) => {
+                const Icon = menuIcons[link.icon]
+                return (
+                  <a
+                    key={link.label}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text-muted hover:text-accent-green transition-colors"
+                    aria-label={link.label}
+                  >
+                    <Icon className="w-6 h-6" />
+                  </a>
+                )
+              })}
+            <a
+              href={`${import.meta.env.BASE_URL}resume.pdf`}
+              download
+              onClick={onClose}
+              className="text-sm px-3 py-1.5 rounded border border-accent-green/50 text-accent-green"
+            >
+              resume.pdf
+            </a>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

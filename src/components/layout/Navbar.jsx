@@ -1,7 +1,11 @@
 import { useState } from 'react'
 import { SITE, NAV_LINKS } from '../../utils/constants'
 import { useScrollSpy } from '../../hooks/useScrollSpy'
+import { socialLinks } from '../../data/socialLinks'
+import { GitHubIcon, LinkedInIcon } from '../ui/icons'
 import MobileMenu from './MobileMenu'
+
+const navIcons = { github: GitHubIcon, linkedin: LinkedInIcon }
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -41,6 +45,37 @@ export default function Navbar() {
               </a>
             )
           })}
+
+          {/* Social links */}
+          <div className="flex items-center gap-3 border-l border-border pl-5">
+            {socialLinks
+              .filter((link) => navIcons[link.icon])
+              .map((link) => {
+                const Icon = navIcons[link.icon]
+                return (
+                  <a
+                    key={link.label}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text-muted hover:text-accent-green transition-colors"
+                    title={link.label}
+                    aria-label={link.label}
+                  >
+                    <Icon />
+                  </a>
+                )
+              })}
+          </div>
+
+          {/* Resume download */}
+          <a
+            href={`${import.meta.env.BASE_URL}resume.pdf`}
+            download
+            className="text-xs px-2.5 py-1 rounded border border-accent-green/50 text-accent-green hover:bg-accent-green hover:text-bg-primary transition-colors whitespace-nowrap"
+          >
+            resume.pdf
+          </a>
 
           {/* Currently working on */}
           {SITE.currentlyWorkingOn && (

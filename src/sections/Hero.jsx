@@ -19,9 +19,10 @@ const COMMANDS = {
   neofetch    — show system info
   vamos       — a little inspiration`,
 
-  skills: `Languages:  Python, Java, C++, C, JavaScript, C#
-ML/Data:    PyTorch, Scikit-learn, Pandas, NumPy, XGBoost, HuggingFace
-Tools:      Git, GitHub Actions, Django, Streamlit, GCP, Groq`,
+  skills: `Languages:  C++, C, Python, Kotlin, Java, JavaScript
+Systems:    ARM big.LITTLE, Linux scheduling, POSIX threads, GGML, Docker, gRPC
+ML/Data:    PyTorch, JAX, scikit-learn, XGBoost, Pandas, NumPy
+Tools:      Git, GitHub Actions, CircuitSim, MySQL, GCP`,
 
   date: () => new Date().toString(),
 
@@ -53,9 +54,9 @@ export default function Hero() {
 
   const { displayedLines, isComplete } = useTypingEffect({
     lines,
-    typingSpeed: 35,
-    lineDelay: 300,
-    startDelay: 500,
+    typingSpeed: 18,
+    lineDelay: 120,
+    startDelay: 300,
   })
 
   const [input, setInput] = useState('')
@@ -126,7 +127,7 @@ export default function Hero() {
     <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20">
       <TerminalWindow title="welcome.sh" className="w-full max-w-2xl" clickToMaximize={false}>
         <div
-          className="space-y-1 cursor-text"
+          className="space-y-1 cursor-text min-h-[10.5rem]"
           onClick={() => inputRef.current?.focus()}
         >
           {/* Typing animation lines */}
@@ -195,25 +196,23 @@ export default function Hero() {
         </div>
       </TerminalWindow>
 
-      {isComplete && (
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.7 }}
-          className="mt-8 flex flex-col items-center gap-4"
-        >
-          <h1 className="text-text-primary text-lg sm:text-xl md:text-2xl font-semibold text-center leading-snug max-w-lg">
-            Building intelligent systems —{' '}
-            <span className="text-accent-green">from edge devices to the cloud</span>.
-          </h1>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent-green/30 bg-accent-green/5">
-            <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
-            <span className="text-accent-green text-xs font-medium">
-              Open to Fall 2026 / Summer 2027 internships
-            </span>
-          </div>
-        </motion.div>
-      )}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.7 }}
+        className="mt-8 flex flex-col items-center gap-4"
+      >
+        <h1 className="text-text-primary text-lg sm:text-xl md:text-2xl font-semibold text-center leading-snug max-w-lg">
+          Building intelligent systems —{' '}
+          <span className="text-accent-green">from edge devices to the cloud</span>.
+        </h1>
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent-green/30 bg-accent-green/5">
+          <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+          <span className="text-accent-green text-xs font-medium">
+            Open to Summer 2027 internships
+          </span>
+        </div>
+      </motion.div>
 
       {isComplete && (
         <motion.div

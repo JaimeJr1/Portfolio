@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const companies = [
-  { name: 'Plix', label: 'Infrastructure' },
+  { name: 'Plix AI', label: 'Systems & Infrastructure' },
   { name: 'Georgia Tech', label: 'Research' },
-  { name: 'LLAMAS Lab', label: 'AI Systems' },
-  { name: 'MIT Energy Initiative', label: 'ML' },
+  { name: 'LLAMAS Lab', label: 'On-Device AI' },
+  { name: 'Ramblin\' Rocket Club', label: 'Simulations' },
   { name: 'GTRI', label: 'Healthcare ML' },
 ]
 
