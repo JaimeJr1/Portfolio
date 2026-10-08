@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import TerminalWindow from '../components/terminal/TerminalWindow'
 import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
@@ -16,7 +17,7 @@ const statusLabels = {
   archived: 'archived',
 }
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, onViewImage }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -103,6 +104,14 @@ function ProjectCard({ project, index }) {
               <span className="text-accent-green">$</span> open --live
             </a>
           )}
+          {project.image && (
+            <button
+              onClick={() => onViewImage(project)}
+              className="text-accent-cyan hover:underline cursor-pointer"
+            >
+              <span className="text-accent-green">$</span> open {project.image.label}
+            </button>
+          )}
         </div>
       </TerminalWindow>
     </motion.div>
@@ -111,6 +120,16 @@ function ProjectCard({ project, index }) {
 
 export default function Projects() {
   const sorted = [...projects].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+  const [lightbox, setLightbox] = useState(null)
+
+  useEffect(() => {
+    if (!lightbox) return
+    const onKey = (e) => {
+      if (e.key === 'Escape') setLightbox(null)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [lightbox])
 
   return (
     <section className="w-full px-4 py-20 max-w-5xl mx-auto">
@@ -122,9 +141,40 @@ export default function Projects() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {sorted.map((project, i) => (
-          <ProjectCard key={project.title} project={project} index={i} />
+          <ProjectCard
+            key={project.title}
+            project={project}
+            index={i}
+            onViewImage={setLightbox}
+          />
         ))}
       </div>
+
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 bg-bg-primary/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out"
+            onClick={() => setLightbox(null)}
+          >
+            <figure className="max-w-4xl w-full">
+              <img
+                src={`${import.meta.env.BASE_URL}${lightbox.image.src}`}
+                alt={lightbox.image.alt}
+                className="w-full max-h-[80vh] object-contain rounded border border-border"
+              />
+              <figcaption className="text-center text-text-muted text-xs mt-3">
+                <span className="text-accent-green">$</span> {lightbox.image.label} —{' '}
+                {lightbox.title}
+                <span className="ml-3 text-text-muted/60">[esc or click to close]</span>
+              </figcaption>
+            </figure>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
