@@ -1,5 +1,5 @@
 import { useMemo, useState, useRef, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import TerminalWindow from '../components/terminal/TerminalWindow'
 import { useTypingEffect } from '../hooks/useTypingEffect'
 import { SITE } from '../utils/constants'
@@ -37,6 +37,13 @@ Tools:      Git, GitHub Actions, CircuitSim, MySQL, GCP`,
        ╚══════════════╝      Vamos!`,
 }
 
+const PROOF_STATS = [
+  '~$500K/yr cloud costs eliminated @ Plix AI',
+  'shipped on 2,500+ production body cameras',
+  '88% on-device Whisper latency reduction',
+  'Top 10 CS in Spain — Nova 111 (2026)',
+]
+
 function scrollToSection(id) {
   const el = document.getElementById(id)
   if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -58,6 +65,17 @@ export default function Hero() {
     lineDelay: 120,
     startDelay: 300,
   })
+
+  const [statIndex, setStatIndex] = useState(0)
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const id = setInterval(
+      () => setStatIndex((i) => (i + 1) % PROOF_STATS.length),
+      3000
+    )
+    return () => clearInterval(id)
+  }, [])
 
   const [input, setInput] = useState('')
   const [history, setHistory] = useState([])
@@ -124,7 +142,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20">
+    <section className="min-h-[88vh] flex flex-col items-center justify-center px-4 pt-20 pb-10">
       <TerminalWindow title="welcome.sh" className="w-full max-w-2xl" clickToMaximize={false}>
         <div
           className="space-y-1 cursor-text min-h-[10.5rem]"
@@ -211,6 +229,22 @@ export default function Hero() {
           <span className="text-accent-green text-xs font-medium">
             Open to Summer 2027 internships
           </span>
+        </div>
+
+        <div className="h-5 overflow-hidden text-xs sm:text-sm">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={statIndex}
+              initial={{ y: 12, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -12, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <span className="text-accent-green">$</span>{' '}
+              <span className="text-text-muted">tail -f impact.log →</span>{' '}
+              <span className="text-accent-cyan">{PROOF_STATS[statIndex]}</span>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </motion.div>
 
