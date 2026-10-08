@@ -6,6 +6,13 @@ export const projects = [
     tech: ['C++', 'Kotlin', 'GGML', 'Linux syscalls', 'ARM big.LITTLE'],
     github: null,
     live: null,
+    image: {
+      src: 'images/projects/whisper-demo.mp4',
+      type: 'video',
+      thumb: 'images/projects/whisper-device-thumb.jpg',
+      alt: 'Two ARM body cameras running on-device Whisper transcription live — the compass UI flips from green to red as real-time incident detection fires',
+      label: 'live-demo.mp4',
+    },
     status: 'active',
     featured: true,
     color: '#3fb950',
@@ -90,6 +97,12 @@ export const projects = [
     status: 'active',
     featured: false,
     color: '#bc8cff',
+    image: {
+      src: 'images/projects/news-digest.png',
+      thumb: 'images/projects/news-digest-thumb.jpg',
+      alt: 'A delivered Daily News digest email — Llama 3.3-ranked articles with images, summaries, and source links',
+      label: 'digest-email.png',
+    },
     preview: [
       '$ python news_intel.py --run',
       'Fetching RSS feeds... 10 sources',
@@ -133,6 +146,12 @@ export const projects = [
     status: 'active',
     featured: false,
     color: '#bc8cff',
+    image: {
+      src: 'images/projects/weather-email.png',
+      thumb: 'images/projects/weather-email-thumb.jpg',
+      alt: 'A delivered Daily Weather News email — forecast, sunrise/sunset, wind, and the day\'s quote',
+      label: 'morning-email.png',
+    },
     preview: [
       '$ python weather.py --send',
       'Fetching forecast for Atlanta, GA...',

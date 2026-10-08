@@ -31,6 +31,25 @@ const quickStats = [
   { label: 'cold_pressed_oj', value: '∞' },
 ]
 
+const moments = [
+  {
+    src: 'images/college/nova-111-selection.jpg',
+    caption: 'Nova 111 — Top 10 CS in Spain',
+  },
+  {
+    src: 'images/college/plix-internship.jpg',
+    caption: 'Joining Plix AI in San Francisco',
+  },
+  {
+    src: 'images/college/state-capitol-sga.jpg',
+    caption: 'GT SGA at the Georgia State Capitol',
+  },
+  {
+    src: 'images/college/bolivia-energy-project.jpg',
+    caption: 'Sustainable energy proposal for rural Bolivia',
+  },
+]
+
 function StatValue({ stat }) {
   const { count, ref } = useCountUp(stat.target ?? 0, 1500)
 
@@ -105,6 +124,30 @@ export default function About() {
                 and solve.
               </Highlight>
             </p>
+          </div>
+
+          <div className="mt-6 border-t border-border pt-5">
+            <div className="text-text-muted text-xs mb-3">
+              <span className="text-accent-green">$</span> ls ~/beyond-code/
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {moments.map((m) => (
+                <figure
+                  key={m.src}
+                  className="rounded border border-border overflow-hidden bg-bg-primary/40 hover:border-accent-green/50 transition-colors"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}${m.src}`}
+                    alt={m.caption}
+                    loading="lazy"
+                    className="w-full h-24 sm:h-28 object-cover"
+                  />
+                  <figcaption className="px-2 py-1.5 text-[10px] leading-snug text-text-muted">
+                    {m.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
 
           <div className="mt-6 border-t border-border pt-5">

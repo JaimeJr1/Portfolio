@@ -173,7 +173,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="min-h-[88vh] flex flex-col items-center justify-center px-4 pt-20 pb-10">
+    <section className="hero-ambient min-h-[88vh] flex flex-col items-center justify-center px-4 pt-20 pb-10">
       <motion.div
         initial={skipIntro ? { scale: 1, y: 0 } : { scale: 1.08, y: 28 }}
         animate={isComplete ? { scale: 1, y: 0 } : { scale: 1.08, y: 28 }}
