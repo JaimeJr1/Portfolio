@@ -24,9 +24,11 @@ function ProjectCard({ project, index, onViewImage }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-30px' }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="h-full"
+      className="h-full cursor-pointer"
+      onClick={() => onViewImage(project)}
     >
       <TerminalWindow
+        clickToMaximize={false}
         title={
           <span className="inline-flex items-center gap-2">
             {project.filename}
@@ -110,6 +112,7 @@ function ProjectCard({ project, index, onViewImage }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="text-accent-cyan hover:underline"
             >
               <span className="text-accent-green">$</span> open --github
@@ -120,18 +123,16 @@ function ProjectCard({ project, index, onViewImage }) {
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="text-accent-cyan hover:underline"
             >
               <span className="text-accent-green">$</span> open --live
             </a>
           )}
           {project.image && (
-            <button
-              onClick={() => onViewImage(project)}
-              className="text-accent-cyan hover:underline cursor-pointer"
-            >
+            <span className="text-accent-cyan">
               <span className="text-accent-green">$</span> open {project.image.label}
-            </button>
+            </span>
           )}
         </div>
       </TerminalWindow>
@@ -191,8 +192,7 @@ export default function Projects() {
             >
               <div className="sticky top-0 flex items-center justify-between px-4 py-2.5 bg-bg-titlebar border-b border-border">
                 <span className="text-text-muted text-sm">
-                  <span className="text-accent-green">$</span> open {lightbox.image.label} —{' '}
-                  {lightbox.filename}
+                  <span className="text-accent-green">$</span> open {lightbox.filename}
                 </span>
                 <button
                   onClick={() => setLightbox(null)}
@@ -202,23 +202,24 @@ export default function Projects() {
                 </button>
               </div>
 
-              {lightbox.image.type === 'video' ? (
-                <video
-                  src={`${import.meta.env.BASE_URL}${lightbox.image.src}`}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                  className="w-full max-h-[55vh] object-contain bg-bg-primary"
-                />
-              ) : (
-                <img
-                  src={`${import.meta.env.BASE_URL}${lightbox.image.src}`}
-                  alt={lightbox.image.alt}
-                  className="w-full max-h-[55vh] object-contain bg-bg-primary"
-                />
-              )}
+              {lightbox.image &&
+                (lightbox.image.type === 'video' ? (
+                  <video
+                    src={`${import.meta.env.BASE_URL}${lightbox.image.src}`}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                    className="w-full max-h-[55vh] object-contain bg-bg-primary"
+                  />
+                ) : (
+                  <img
+                    src={`${import.meta.env.BASE_URL}${lightbox.image.src}`}
+                    alt={lightbox.image.alt}
+                    className="w-full max-h-[55vh] object-contain bg-bg-primary"
+                  />
+                ))}
 
               <div className="p-5">
                 {lightbox.metrics && (
