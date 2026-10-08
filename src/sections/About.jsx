@@ -26,7 +26,7 @@ const quickStats = [
   { label: 'devices_shipped_to', value: '2,500+' },
   { label: 'infra_savings', value: '$500K/yr' },
   { label: 'languages', value: '3' },
-  { label: 'cups_of_coffee', value: '∞' },
+  { label: 'cold_pressed_oj', value: '∞' },
 ]
 
 export default function About() {
