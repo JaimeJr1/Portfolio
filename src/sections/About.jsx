@@ -78,8 +78,8 @@ export default function About() {
       >
         <TerminalWindow title="about.sh">
           <div className="flex flex-col sm:flex-row gap-6 items-start">
-            {/* ASCII Initials */}
-            <div className="hidden sm:flex flex-col items-center shrink-0">
+            {/* Headshot — centered above the info on phones, beside it on desktop */}
+            <div className="flex flex-col items-center shrink-0 self-center sm:self-start">
               <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-accent-green/60 shadow-[0_0_20px_rgba(63,185,80,0.15)] bg-bg-primary">
                 {!imgError ? (
                   <img
@@ -101,7 +101,7 @@ export default function About() {
             <div className="flex-1 w-full">
               <CommandOutput lines={info} />
 
-              <div className="mt-5 flex flex-wrap gap-4 py-3 px-4 rounded border border-border bg-bg-primary/30">
+              <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5 sm:flex sm:flex-wrap sm:gap-4 py-3 px-4 rounded border border-border bg-bg-primary/30">
                 {quickStats.map((stat) => (
                   <div key={stat.label} className="text-xs">
                     <span className="text-text-muted">{stat.label}:</span>{' '}
@@ -142,7 +142,7 @@ export default function About() {
                     loading="lazy"
                     className="w-full h-24 sm:h-28 object-cover"
                   />
-                  <figcaption className="px-2 py-1.5 text-[10px] leading-snug text-text-muted">
+                  <figcaption className="px-2 py-1.5 text-xs leading-snug text-text-muted">
                     {m.caption}
                   </figcaption>
                 </figure>

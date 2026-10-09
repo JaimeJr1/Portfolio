@@ -67,7 +67,7 @@ export default function Resume() {
                     {exp.company}
                   </div>
                   <div className="text-text-muted text-sm">{exp.date}</div>
-                  <ul className="mt-2 space-y-1.5">
+                  <ul className="mt-2.5 space-y-3 sm:space-y-2">
                     {exp.bullets.map((b, j) => (
                       <DiffBullet key={j} text={b} />
                     ))}

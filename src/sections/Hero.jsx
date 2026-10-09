@@ -276,7 +276,10 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        <motion.div variants={cascadeItem} className="h-6 overflow-hidden text-sm sm:text-base">
+        <motion.div
+          variants={cascadeItem}
+          className="h-12 sm:h-6 overflow-hidden text-sm sm:text-base text-center px-2"
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={statIndex}
