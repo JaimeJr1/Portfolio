@@ -3,6 +3,7 @@ import { SITE, NAV_LINKS } from '../../utils/constants'
 import { useScrollSpy } from '../../hooks/useScrollSpy'
 import { socialLinks } from '../../data/socialLinks'
 import { GitHubIcon, LinkedInIcon } from '../ui/icons'
+import ThemeToggle from '../ui/ThemeToggle'
 import MobileMenu from './MobileMenu'
 
 const navIcons = { github: GitHubIcon, linkedin: LinkedInIcon }
@@ -41,7 +42,7 @@ export default function Navbar() {
                 }`}
               >
                 {link.label}
-                {isActive && <span className="cursor-blink ml-0.5">_</span>}
+                {isActive && <span className="ml-0.5">_</span>}
               </a>
             )
           })}
@@ -74,16 +75,19 @@ export default function Navbar() {
             download
             className="text-xs px-2.5 py-1 rounded border border-accent-green/50 text-accent-green hover:bg-accent-green hover:text-bg-primary transition-colors whitespace-nowrap"
           >
-            resume.pdf
+            Resume (PDF)
           </a>
 
           {/* Currently working on */}
           {SITE.currentlyWorkingOn && (
             <span className="hidden lg:inline-flex items-center gap-1.5 text-xs text-text-muted border-l border-border pl-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-green cursor-blink" />
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-green" />
               <span>{SITE.currentlyWorkingOn}</span>
             </span>
           )}
+
+          {/* Theme toggle */}
+          <ThemeToggle />
 
           {/* Source code */}
           <a
@@ -97,14 +101,17 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMenuOpen(true)}
-          className="md:hidden text-text-muted hover:text-accent-green transition-colors text-sm"
-          aria-label="Open menu"
-        >
-          <span className="text-accent-green">$</span> menu
-        </button>
+        {/* Mobile: theme toggle + menu */}
+        <div className="md:hidden flex items-center gap-4">
+          <ThemeToggle />
+          <button
+            onClick={() => setMenuOpen(true)}
+            className="text-text-muted hover:text-accent-green transition-colors text-sm"
+            aria-label="Open menu"
+          >
+            Menu
+          </button>
+        </div>
       </div>
 
       <MobileMenu

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import TerminalWindow from '../components/terminal/TerminalWindow'
+import Panel from '../components/ui/Panel'
 import SectionHeader from '../components/terminal/SectionHeader'
 import CommandOutput from '../components/terminal/CommandOutput'
 import Badge from '../components/ui/Badge'
@@ -76,15 +76,16 @@ export default function About() {
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.5 }}
       >
-        <TerminalWindow title="about.sh">
+        <Panel>
           <div className="flex flex-col sm:flex-row gap-6 items-start">
             {/* Headshot — centered above the info on phones, beside it on desktop */}
             <div className="flex flex-col items-center shrink-0 self-center sm:self-start">
-              <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-accent-green/60 shadow-[0_0_20px_rgba(63,185,80,0.15)] bg-bg-primary">
+              <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-accent-green/60 bg-bg-primary">
                 {!imgError ? (
                   <img
                     src={`${import.meta.env.BASE_URL}images/headshot.png`}
                     alt="Jaime Alonso"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                     onError={() => setImgError(true)}
                   />
@@ -163,7 +164,7 @@ export default function About() {
               </div>
             </div>
           </div>
-        </TerminalWindow>
+        </Panel>
       </motion.div>
     </section>
   )

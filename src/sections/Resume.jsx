@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import TerminalWindow from '../components/terminal/TerminalWindow'
+import Panel from '../components/ui/Panel'
 import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
 import Highlight from '../components/ui/Highlight'
@@ -31,7 +31,7 @@ export default function Resume() {
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.5 }}
       >
-        <TerminalWindow title="resume.txt">
+        <Panel>
           {/* Education */}
           <div className="mb-6">
             <div className="text-accent-purple font-semibold mb-3">=== EDUCATION ===</div>
@@ -110,7 +110,7 @@ export default function Resume() {
               ))}
             </div>
           </div>
-        </TerminalWindow>
+        </Panel>
 
         {/* Download Button */}
         <div className="mt-6 flex justify-center">
@@ -119,7 +119,7 @@ export default function Resume() {
             download
             className="inline-flex items-center gap-2 px-6 py-3 border border-accent-green text-accent-green rounded-lg hover:bg-accent-green hover:text-bg-primary transition-all duration-300 text-sm font-medium"
           >
-            <span className="text-text-muted">$</span> download resume.pdf
+            Download resume (PDF)
           </a>
         </div>
       </motion.div>

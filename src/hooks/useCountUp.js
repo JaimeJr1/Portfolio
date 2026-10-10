@@ -22,6 +22,11 @@ export function useCountUp(target, duration = 2000) {
   useEffect(() => {
     if (!started) return
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const raf = requestAnimationFrame(() => setCount(target))
+      return () => cancelAnimationFrame(raf)
+    }
+
     let startTime = null
     const step = (timestamp) => {
       if (!startTime) startTime = timestamp

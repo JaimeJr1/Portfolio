@@ -275,7 +275,7 @@ export default function Hero() {
           variants={cascadeItem}
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent-green/30 bg-accent-green/5"
         >
-          <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-accent-green" />
           <span className="text-accent-green text-xs font-medium">
             Open to Summer 2027 internships
           </span>
@@ -295,7 +295,7 @@ export default function Hero() {
             >
               <span className="text-accent-green">$</span>{' '}
               <span className="text-text-muted">tail -f impact.log →</span>{' '}
-              <span className="text-accent-cyan font-semibold [text-shadow:0_0_12px_rgba(88,166,255,0.45)]">
+              <span className="text-accent-cyan font-semibold">
                 {PROOF_STATS[statIndex]}
               </span>
             </motion.div>
@@ -308,25 +308,23 @@ export default function Hero() {
         >
           <button
             onClick={() => scrollToSection('projects')}
-            className="px-5 py-2.5 rounded-lg bg-accent-green text-bg-primary text-sm font-semibold hover:brightness-110 transition-all cursor-pointer shadow-[0_0_20px_rgba(63,185,80,0.35)]"
+            className="px-5 py-2.5 rounded-lg bg-accent-green text-bg-primary text-sm font-semibold hover:brightness-110 transition-all cursor-pointer"
           >
-            $ open projects/
+            View projects
           </button>
           <button
             onClick={() => scrollToSection('resume')}
             className="px-5 py-2.5 rounded-lg border border-border text-text-primary text-sm hover:border-accent-green hover:text-accent-green transition-colors cursor-pointer"
           >
-            $ cat resume.txt
+            View resume
           </button>
         </motion.div>
 
         <motion.div variants={cascadeItem}>
-          <motion.button
+          <button
             onClick={() => scrollToSection('projects')}
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.4, ease: 'easeInOut' }}
             aria-label="Scroll to projects"
-            className="mt-6 w-11 h-11 rounded-full border-2 border-accent-green/60 flex items-center justify-center text-accent-green hover:bg-accent-green/10 transition-colors cursor-pointer shadow-[0_0_18px_rgba(63,185,80,0.3)]"
+            className="mt-6 w-11 h-11 rounded-full border-2 border-accent-green/60 flex items-center justify-center text-accent-green hover:bg-accent-green/10 transition-colors cursor-pointer"
           >
             <svg
               viewBox="0 0 24 24"
@@ -337,7 +335,7 @@ export default function Hero() {
             >
               <path d="m6 9 6 6 6-6" />
             </svg>
-          </motion.button>
+          </button>
         </motion.div>
       </motion.div>
       )}

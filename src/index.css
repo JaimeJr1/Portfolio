@@ -5,7 +5,7 @@
   --color-bg-terminal: #161b22;
   --color-bg-titlebar: #21262d;
   --color-text-primary: #e6edf3;
-  --color-text-muted: #7d8590;
+  --color-text-muted: #8b949e;
   --color-accent-green: #3fb950;
   --color-accent-cyan: #58a6ff;
   --color-accent-purple: #bc8cff;
@@ -14,6 +14,24 @@
   --color-accent-orange: #d18616;
   --color-border: #30363d;
   --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Light theme (GitHub Light palette). The pre-paint script in index.html sets
+   data-theme on <html> before first render; ThemeToggle switches it live. */
+[data-theme='light'] {
+  --color-bg-primary: #ffffff;
+  --color-bg-terminal: #f6f8fa;
+  --color-bg-titlebar: #eaeef2;
+  --color-text-primary: #1f2328;
+  --color-text-muted: #59636e;
+  --color-accent-green: #1a7f37;
+  --color-accent-cyan: #0969da;
+  --color-accent-purple: #8250df;
+  --color-accent-yellow: #9a6700;
+  --color-accent-red: #cf222e;
+  --color-accent-orange: #bc4c00;
+  --color-border: #d1d9e0;
+  color-scheme: light;
 }
 
 * {
@@ -25,6 +43,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  color-scheme: dark;
 }
 
 body {
@@ -34,6 +53,11 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 2px;
 }
 
 ::selection {
@@ -93,23 +117,6 @@ body {
 
 .terminal-btn:hover::after {
   opacity: 1;
-}
-
-.scanline-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.03) 2px,
-    rgba(0, 0, 0, 0.03) 4px
-  );
 }
 
 /* Marquee animation for experience bar */
@@ -180,6 +187,14 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .cursor-blink {
+    animation: none;
+  }
+
   .marquee-track {
     animation: none;
     flex-wrap: wrap;

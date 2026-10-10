@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import TerminalWindow from '../components/terminal/TerminalWindow'
+import Panel from '../components/ui/Panel'
 import SectionHeader from '../components/terminal/SectionHeader'
 import CopyButton from '../components/ui/CopyButton'
 import { SITE } from '../utils/constants'
@@ -23,7 +23,7 @@ export default function Contact() {
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.5 }}
       >
-        <TerminalWindow title="contact.txt">
+        <Panel>
           <div className="flex flex-col items-center">
             <p className="text-text-muted text-sm mb-6 text-center">
               Want to collaborate or just say hi? Reach out through any of these channels.
@@ -31,7 +31,7 @@ export default function Contact() {
 
             <div className="w-full max-w-md mb-6 px-4 py-3 rounded-lg border border-accent-green/30 bg-accent-green/5">
               <div className="flex items-center gap-2 text-sm">
-                <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-accent-green" />
                 <span className="text-accent-green font-semibold">status:</span>
                 <span className="text-text-primary">open to opportunities</span>
               </div>
@@ -56,7 +56,7 @@ export default function Contact() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 rounded-lg border border-border bg-bg-primary/50 hover:border-accent-green hover:shadow-[0_0_15px_rgba(63,185,80,0.08)] transition-all duration-300 group"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg border border-border bg-bg-primary/50 hover:border-accent-green transition-all duration-300 group"
                 >
                   <span className="text-accent-green select-none">&gt;</span>
                   <span className="text-text-muted w-20 text-sm">{link.label}</span>
@@ -78,11 +78,11 @@ export default function Contact() {
               <div className="mt-2">
                 <span className="text-accent-green">{SITE.prompt}:~$</span>{' '}
                 <span className="text-text-primary">exit</span>
-                <span className="cursor-blink text-accent-green ml-1">_</span>
+                <span className="text-accent-green ml-1">_</span>
               </div>
             </div>
           </div>
-        </TerminalWindow>
+        </Panel>
       </motion.div>
 
       <footer className="mt-16 pt-6 border-t border-border text-center text-text-muted text-xs space-y-3">
@@ -109,10 +109,10 @@ export default function Contact() {
           {'</>'} view source
         </a>
         <div className="mt-4 pt-3 border-t border-border/50">
-          <p className="text-text-muted/60 italic text-xs">
-            <span className="text-accent-yellow/60">{'// '}</span>
+          <p className="text-text-muted italic text-xs">
+            <span className="text-accent-yellow">{'// '}</span>
             "The day you stop working hard, is the day you stop being lucky."
-            <span className="text-text-muted/40"> — R. Nadal</span>
+            <span> — R. Nadal</span>
           </p>
         </div>
       </footer>

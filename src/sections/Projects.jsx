@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useInView } from 'framer-motion'
-import TerminalWindow from '../components/terminal/TerminalWindow'
+import Panel from '../components/ui/Panel'
 import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
 import Highlight from '../components/ui/Highlight'
@@ -37,22 +37,17 @@ function ProjectCard({ project, index, onViewImage }) {
       className="h-full cursor-pointer"
       onClick={() => onViewImage(project)}
     >
-      <TerminalWindow
-        clickToMaximize={false}
-        title={
-          <span className="inline-flex items-center gap-2">
-            {project.filename}
-            {project.featured && (
-              <span className="text-accent-yellow text-xs">[FEATURED]</span>
-            )}
-            <span className="inline-flex items-center gap-1 ml-auto">
-              <span className={`w-2 h-2 rounded-full ${statusColors[project.status]}`} />
-              <span className="text-xs text-text-muted">{statusLabels[project.status]}</span>
-            </span>
+      <Panel className="h-full group hover:border-accent-green transition-all duration-300">
+        <div className="flex items-center gap-2 mb-4 text-xs">
+          <span className="text-text-muted">{project.filename}</span>
+          {project.featured && (
+            <span className="text-accent-yellow">[FEATURED]</span>
+          )}
+          <span className="inline-flex items-center gap-1 ml-auto">
+            <span className={`w-2 h-2 rounded-full ${statusColors[project.status]}`} />
+            <span className="text-text-muted">{statusLabels[project.status]}</span>
           </span>
-        }
-        className="h-full group hover:border-accent-green hover:shadow-[0_0_20px_rgba(63,185,80,0.1)] transition-all duration-300"
-      >
+        </div>
         {/* Terminal preview block — hovering reveals the project image when one exists */}
         <div
           ref={previewRef}
@@ -101,10 +96,6 @@ function ProjectCard({ project, index, onViewImage }) {
           </div>
         )}
 
-        <div className="text-text-muted text-xs mb-3">
-          <span className="text-accent-green">$</span> cat README.md
-        </div>
-
         <h3 className="text-accent-purple text-base font-semibold mb-2">
           {project.title}
         </h3>
@@ -128,7 +119,7 @@ function ProjectCard({ project, index, onViewImage }) {
               onClick={(e) => e.stopPropagation()}
               className="text-accent-cyan hover:underline"
             >
-              <span className="text-accent-green">$</span> open --github
+              View code ↗
             </a>
           )}
           {project.live && (
@@ -139,16 +130,22 @@ function ProjectCard({ project, index, onViewImage }) {
               onClick={(e) => e.stopPropagation()}
               className="text-accent-cyan hover:underline"
             >
-              <span className="text-accent-green">$</span> open --live
+              Live demo ↗
             </a>
           )}
           {project.image && (
-            <span className="text-accent-cyan">
-              <span className="text-accent-green">$</span> open {project.image.label}
-            </span>
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                onViewImage(project)
+              }}
+              className="text-accent-cyan hover:underline cursor-pointer"
+            >
+              {project.image.type === 'video' ? 'Watch demo' : 'View screenshot'}
+            </button>
           )}
         </div>
-      </TerminalWindow>
+      </Panel>
     </motion.div>
   )
 }
@@ -171,7 +168,7 @@ export default function Projects() {
       <SectionHeader command="ls ~/projects/" id="projects" />
 
       <p className="text-text-muted text-sm text-center mb-8 -mt-4">
-        Featured builds — from AI systems to embedded hardware.
+        Selected builds, from AI systems to embedded hardware.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -204,14 +201,12 @@ export default function Projects() {
               className="w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-lg border border-border bg-bg-terminal cursor-default shadow-2xl"
             >
               <div className="sticky top-0 flex items-center justify-between px-4 py-2.5 bg-bg-titlebar border-b border-border">
-                <span className="text-text-muted text-sm">
-                  <span className="text-accent-green">$</span> open {lightbox.filename}
-                </span>
+                <span className="text-text-muted text-sm">{lightbox.filename}</span>
                 <button
                   onClick={() => setLightbox(null)}
                   className="text-text-muted hover:text-accent-red transition-colors text-xs cursor-pointer"
                 >
-                  [esc] close ✕
+                  Close (Esc) ✕
                 </button>
               </div>
 
@@ -272,7 +267,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="text-accent-cyan hover:underline"
                       >
-                        <span className="text-accent-green">$</span> open --github
+                        View code ↗
                       </a>
                     )}
                     {lightbox.live && (
@@ -282,7 +277,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="text-accent-cyan hover:underline"
                       >
-                        <span className="text-accent-green">$</span> open --live
+                        Live demo ↗
                       </a>
                     )}
                   </div>

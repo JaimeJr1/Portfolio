@@ -21,7 +21,7 @@ export default function MobileMenu({ open, onClose, activeId }) {
             className="absolute top-4 right-4 text-text-muted hover:text-accent-red transition-colors text-sm"
             aria-label="Close menu"
           >
-            <span className="text-accent-green">$</span> close
+            Close ✕
           </button>
 
           {NAV_LINKS.map((link) => {
@@ -69,7 +69,7 @@ export default function MobileMenu({ open, onClose, activeId }) {
               onClick={onClose}
               className="text-sm px-3 py-1.5 rounded border border-accent-green/50 text-accent-green"
             >
-              resume.pdf
+              Resume (PDF)
             </a>
           </div>
         </motion.div>

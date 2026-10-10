@@ -1,3 +1,4 @@
+import { MotionConfig } from 'framer-motion'
 import Navbar from './components/layout/Navbar'
 import ScrollToTop from './components/layout/ScrollToTop'
 import KeyboardShortcuts from './components/layout/KeyboardShortcuts'
@@ -11,8 +12,7 @@ import ExperienceBar from './sections/ExperienceBar'
 
 export default function App() {
   return (
-    <>
-      <div className="scanline-overlay" />
+    <MotionConfig reducedMotion="user">
       <Navbar />
       <main className="flex flex-col items-center w-full">
         <Hero />
@@ -28,6 +28,6 @@ export default function App() {
       </main>
       <ScrollToTop />
       <KeyboardShortcuts />
-    </>
+    </MotionConfig>
   )
 }

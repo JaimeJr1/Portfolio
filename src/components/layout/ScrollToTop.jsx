@@ -21,7 +21,7 @@ export default function ScrollToTop() {
           className="fixed bottom-6 right-6 z-40 w-10 h-10 rounded-lg bg-bg-titlebar border border-border text-accent-green hover:bg-accent-green hover:text-bg-primary transition-all duration-300 flex items-center justify-center text-sm font-bold"
           aria-label="Scroll to top"
         >
-          ^C
+          ↑
         </motion.button>
       )}
     </AnimatePresence>
