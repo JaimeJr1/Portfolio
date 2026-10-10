@@ -175,9 +175,14 @@ export default function Hero() {
   return (
     <section className="hero-ambient min-h-[88vh] flex flex-col items-center justify-center px-4 pt-20 pb-10">
       <motion.div
+        layout
         initial={skipIntro ? { scale: 1, y: 0 } : { scale: 1.08, y: 28 }}
         animate={isComplete ? { scale: 1, y: 0 } : { scale: 1.08, y: 28 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        transition={{
+          duration: 0.6,
+          ease: 'easeOut',
+          layout: { duration: 0.5, ease: 'easeOut' },
+        }}
         className="w-full max-w-2xl"
       >
       <TerminalWindow title="welcome.sh" className="w-full" clickToMaximize={false}>

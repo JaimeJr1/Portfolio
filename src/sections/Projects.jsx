@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion, useInView } from 'framer-motion'
 import TerminalWindow from '../components/terminal/TerminalWindow'
 import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
@@ -19,6 +19,15 @@ const statusLabels = {
 }
 
 function ProjectCard({ project, index, onViewImage }) {
+  // No hover on touch screens — reveal the image while the card passes
+  // through the middle band of the viewport instead.
+  const previewRef = useRef(null)
+  const inCenter = useInView(previewRef, { margin: '-35% 0px -35% 0px' })
+  const [touchDevice] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches
+  )
+  const revealImage = touchDevice && inCenter
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -46,6 +55,7 @@ function ProjectCard({ project, index, onViewImage }) {
       >
         {/* Terminal preview block — hovering reveals the project image when one exists */}
         <div
+          ref={previewRef}
           className={`relative w-full h-28 rounded border border-border/50 bg-bg-primary/50 p-3 mb-4 overflow-hidden font-mono text-xs ${
             project.image ? 'cursor-zoom-in' : ''
           }`}
@@ -70,7 +80,9 @@ function ProjectCard({ project, index, onViewImage }) {
               alt=""
               aria-hidden="true"
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+                revealImage ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+              }`}
             />
           )}
         </div>
