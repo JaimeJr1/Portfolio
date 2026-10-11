@@ -82,7 +82,7 @@ export default function ProjectShowcase({ projects, onViewImage }) {
   const project = projects[index]
 
   return (
-    <div ref={wrapperRef} style={{ height: `${projects.length * 70}vh` }}>
+    <div ref={wrapperRef} className="relative" style={{ height: `${projects.length * 70}vh` }}>
       <div className="sticky top-0 h-svh flex items-center justify-center overflow-hidden pt-14">
         <div className="showcase-ambient absolute inset-0 pointer-events-none" aria-hidden="true" />
 
