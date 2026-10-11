@@ -14,7 +14,7 @@ const iconMap = {
 
 export default function Contact() {
   return (
-    <section className="w-full px-4 py-24 max-w-4xl mx-auto">
+    <section className="w-full px-4 py-16 max-w-4xl mx-auto">
       <SectionHeader command="cat contact.txt" title="Contact" id="contact" />
 
       <motion.div

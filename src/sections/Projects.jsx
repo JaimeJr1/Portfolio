@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Panel from '../components/ui/Panel'
 import ProjectShowcase from '../components/ProjectShowcase'
-import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
 import Highlight from '../components/ui/Highlight'
 import { projects } from '../data/projects'
@@ -157,16 +156,10 @@ export default function Projects() {
   }, [lightbox])
 
   return (
-    <section className="w-full px-4 py-24 max-w-5xl mx-auto">
-      <SectionHeader command="ls ~/projects/" title="Projects" id="projects" />
-
-      <p className="text-text-muted text-sm text-center mb-8 -mt-4">
-        Selected builds, from AI systems to embedded hardware.
-      </p>
-
+    <section id="projects" className="w-full px-4 pb-16 max-w-5xl mx-auto">
       <ProjectShowcase projects={showcased} onViewImage={setLightbox} />
 
-      <div className="font-mono text-text-muted text-xs mt-16 mb-5">
+      <div className="font-mono text-text-muted text-xs mt-2 mb-5">
         <span className="text-accent-green">$</span> ls ~/projects/more/
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

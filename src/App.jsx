@@ -2,7 +2,6 @@ import { MotionConfig } from 'framer-motion'
 import Navbar from './components/layout/Navbar'
 import ScrollToTop from './components/layout/ScrollToTop'
 import KeyboardShortcuts from './components/layout/KeyboardShortcuts'
-import SectionDivider from './components/ui/SectionDivider'
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Projects from './sections/Projects'
@@ -17,13 +16,9 @@ export default function App() {
       <main className="flex flex-col items-center w-full">
         <Hero />
         <ExperienceBar />
-        <SectionDivider />
         <About />
-        <SectionDivider />
         <Projects />
-        <SectionDivider />
         <Resume />
-        <SectionDivider />
         <Contact />
       </main>
       <ScrollToTop />

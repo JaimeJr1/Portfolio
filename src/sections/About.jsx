@@ -67,7 +67,7 @@ export default function About() {
   const [imgError, setImgError] = useState(false)
 
   return (
-    <section className="w-full px-4 py-24 max-w-4xl mx-auto">
+    <section className="w-full px-4 py-16 max-w-4xl mx-auto">
       <SectionHeader command="cat about.md" title="About" id="about" />
 
       <motion.div

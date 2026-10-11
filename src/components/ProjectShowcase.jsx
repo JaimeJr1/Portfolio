@@ -87,6 +87,40 @@ export default function ProjectShowcase({ projects, onViewImage }) {
         <div className="showcase-ambient absolute inset-0 pointer-events-none" aria-hidden="true" />
 
         <div className="relative w-full max-w-5xl px-4 sm:px-6">
+          {/* Section header pinned with the stage so the title never drifts
+              away from the projects it labels */}
+          <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 mb-6 sm:mb-8">
+            <div>
+              <p className="font-mono text-xs text-text-muted mb-1">
+                <span className="text-accent-green">$</span> ls ~/projects/
+              </p>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-text-primary">
+                Projects
+              </h2>
+            </div>
+            <div className="flex items-center gap-3 font-mono text-xs text-text-muted pb-1.5">
+              <span>
+                [{index + 1}/{projects.length}]
+              </span>
+              <span
+                className="relative block w-32 sm:w-44 h-1 rounded-full bg-border overflow-hidden"
+                aria-hidden="true"
+              >
+                <motion.span
+                  className="absolute inset-0 origin-left bg-accent-green"
+                  style={{ scaleX: railProgress }}
+                />
+                {projects.slice(1).map((p, i) => (
+                  <span
+                    key={p.title}
+                    className="absolute top-0 bottom-0 w-px bg-bg-primary"
+                    style={{ left: `${((i + 1) / projects.length) * 100}%` }}
+                  />
+                ))}
+              </span>
+            </div>
+          </div>
+
           <AnimatePresence mode="wait" custom={direction} initial={false}>
             <motion.div
               key={project.title}
@@ -216,28 +250,6 @@ export default function ProjectShowcase({ projects, onViewImage }) {
             </motion.div>
           </AnimatePresence>
 
-          {/* Progress: counter + continuously filling rail with slide boundaries */}
-          <div className="mt-10 flex items-center justify-center gap-3 font-mono text-xs text-text-muted">
-            <span>
-              [{index + 1}/{projects.length}]
-            </span>
-            <span
-              className="relative block w-44 h-1 rounded-full bg-border overflow-hidden"
-              aria-hidden="true"
-            >
-              <motion.span
-                className="absolute inset-0 origin-left bg-accent-green"
-                style={{ scaleX: railProgress }}
-              />
-              {projects.slice(1).map((p, i) => (
-                <span
-                  key={p.title}
-                  className="absolute top-0 bottom-0 w-px bg-bg-primary"
-                  style={{ left: `${((i + 1) / projects.length) * 100}%` }}
-                />
-              ))}
-            </span>
-          </div>
         </div>
       </div>
     </div>

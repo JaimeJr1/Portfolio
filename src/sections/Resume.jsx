@@ -22,7 +22,7 @@ function DiffBullet({ text }) {
 
 export default function Resume() {
   return (
-    <section className="w-full px-4 py-24 max-w-4xl mx-auto">
+    <section className="w-full px-4 py-16 max-w-4xl mx-auto">
       <SectionHeader command="cat resume.txt" title="Resume" id="resume" />
 
       <motion.div
