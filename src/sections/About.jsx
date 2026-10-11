@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import CursorPreview from '../components/ui/CursorPreview'
 import { useCursorPreview } from '../hooks/useCursorPreview'
 import SectionHeader from '../components/terminal/SectionHeader'
@@ -67,7 +67,17 @@ function StatValue({ stat }) {
 export default function About() {
   const [imgError, setImgError] = useState(false)
   const [hoveredMoment, setHoveredMoment] = useState(null)
+  const [lightbox, setLightbox] = useState(null)
   const { x, y, onMouseMove } = useCursorPreview()
+
+  useEffect(() => {
+    if (!lightbox) return
+    const onKey = (e) => {
+      if (e.key === 'Escape') setLightbox(null)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [lightbox])
 
   return (
     <section className="w-full px-4 py-16 max-w-5xl mx-auto">
@@ -140,10 +150,13 @@ export default function About() {
               onMouseLeave={() => setHoveredMoment(null)}
             >
               {moments.map((m) => (
-                <figure
+                <button
                   key={m.src}
+                  type="button"
+                  onClick={() => setLightbox(m)}
                   onMouseEnter={() => setHoveredMoment(m)}
-                  className="rounded border border-border overflow-hidden bg-bg-terminal/50 hover:border-accent-green/50 transition-colors"
+                  aria-label={`View photo: ${m.caption}`}
+                  className="text-left rounded border border-border overflow-hidden bg-bg-terminal/50 hover:border-accent-green/50 transition-colors cursor-zoom-in"
                 >
                   <img
                     src={`${import.meta.env.BASE_URL}${m.src}`}
@@ -151,10 +164,10 @@ export default function About() {
                     loading="lazy"
                     className="w-full h-24 sm:h-28 object-cover"
                   />
-                  <figcaption className="px-2 py-1.5 text-xs leading-snug text-text-muted">
+                  <span className="block px-2 py-1.5 text-xs leading-snug text-text-muted">
                     {m.caption}
-                  </figcaption>
-                </figure>
+                  </span>
+                </button>
               ))}
             </div>
 
@@ -181,6 +194,46 @@ export default function About() {
                 </div>
               )}
             </CursorPreview>
+
+            {/* Tap/click opens the full photo — the only path on touch screens */}
+            <AnimatePresence>
+              {lightbox && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="fixed inset-0 z-50 bg-bg-primary/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out"
+                  onClick={() => setLightbox(null)}
+                >
+                  <motion.div
+                    initial={{ scale: 0.96, y: 10 }}
+                    animate={{ scale: 1, y: 0 }}
+                    exit={{ scale: 0.96, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    onClick={(e) => e.stopPropagation()}
+                    className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg border border-border bg-bg-terminal cursor-default shadow-2xl"
+                  >
+                    <div className="sticky top-0 flex items-center justify-between px-4 py-2.5 bg-bg-titlebar border-b border-border">
+                      <span className="font-mono text-text-muted text-xs truncate pr-3">
+                        {lightbox.caption}
+                      </span>
+                      <button
+                        onClick={() => setLightbox(null)}
+                        className="text-text-muted hover:text-accent-red transition-colors text-xs cursor-pointer shrink-0"
+                      >
+                        Close ✕
+                      </button>
+                    </div>
+                    <img
+                      src={`${import.meta.env.BASE_URL}${lightbox.src}`}
+                      alt={lightbox.caption}
+                      className="w-full max-h-[75vh] object-contain bg-bg-primary"
+                    />
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           <div className="mt-6 border-t border-border pt-5">
