@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <nav className="font-mono fixed top-0 left-0 right-0 z-50 bg-bg-primary/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
         {/* Prompt badge */}
         <a
           href="#"
@@ -80,7 +80,7 @@ export default function Navbar() {
 
           {/* Currently working on */}
           {SITE.currentlyWorkingOn && (
-            <span className="hidden lg:inline-flex items-center gap-1.5 text-xs text-text-muted border-l border-border pl-5">
+            <span className="hidden xl:inline-flex items-center gap-1.5 text-xs text-text-muted border-l border-border pl-5 whitespace-nowrap">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-green" />
               <span>{SITE.currentlyWorkingOn}</span>
             </span>
