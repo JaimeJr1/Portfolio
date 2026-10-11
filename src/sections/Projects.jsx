@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Panel from '../components/ui/Panel'
+import ProjectShowcase from '../components/ProjectShowcase'
 import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
 import Highlight from '../components/ui/Highlight'
@@ -142,6 +143,8 @@ export default function Projects() {
   const sorted = [...projects].sort(
     (a, b) => b.year - a.year || (b.featured ? 1 : 0) - (a.featured ? 1 : 0)
   )
+  const showcased = sorted.filter((p) => p.featured)
+  const rest = sorted.filter((p) => !p.featured)
   const [lightbox, setLightbox] = useState(null)
 
   useEffect(() => {
@@ -161,8 +164,13 @@ export default function Projects() {
         Selected builds, from AI systems to embedded hardware.
       </p>
 
+      <ProjectShowcase projects={showcased} onViewImage={setLightbox} />
+
+      <div className="font-mono text-text-muted text-xs mt-16 mb-5">
+        <span className="text-accent-green">$</span> ls ~/projects/more/
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {sorted.map((project, i) => (
+        {rest.map((project, i) => (
           <ProjectCard
             key={project.title}
             project={project}
