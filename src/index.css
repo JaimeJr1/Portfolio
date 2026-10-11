@@ -160,6 +160,15 @@ body {
   pointer-events: none;
 }
 
+/* Soft ambient wash behind the pinned project showcase stage. */
+.showcase-ambient {
+  background: radial-gradient(
+    ellipse 55% 45% at 38% 50%,
+    rgba(63, 185, 80, 0.07),
+    transparent 70%
+  );
+}
+
 /* Phones get a larger type base so the dense terminal layout breathes;
    every rem-based size scales with it. */
 @media (max-width: 640px) {
