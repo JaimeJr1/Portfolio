@@ -14,7 +14,7 @@ export default function MobileMenu({ open, onClose, activeId }) {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: '100%' }}
           transition={{ type: 'tween', duration: 0.3 }}
-          className="fixed inset-0 z-50 bg-bg-primary/95 backdrop-blur-md flex flex-col items-center justify-center gap-8"
+          className="font-mono fixed inset-0 z-50 bg-bg-primary/95 backdrop-blur-md flex flex-col items-center justify-center gap-8"
         >
           <button
             onClick={onClose}

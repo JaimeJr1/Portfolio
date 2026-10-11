@@ -56,7 +56,7 @@ export default function KeyboardShortcuts() {
   return (
     <>
       {/* Floating hint */}
-      <div className="fixed bottom-6 left-6 z-40 text-text-muted text-xs hidden md:block">
+      <div className="font-mono fixed bottom-6 left-6 z-40 text-text-muted text-xs hidden md:block">
         Press <span className="text-accent-green px-1.5 py-0.5 rounded bg-bg-titlebar border border-border">?</span> for shortcuts
       </div>
 
@@ -75,7 +75,7 @@ export default function KeyboardShortcuts() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="bg-bg-terminal border border-border rounded-lg p-6 max-w-sm w-full"
+              className="font-mono bg-bg-terminal border border-border rounded-lg p-6 max-w-sm w-full"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="text-accent-purple font-semibold mb-4">Keyboard Shortcuts</div>

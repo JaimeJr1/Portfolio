@@ -14,8 +14,8 @@ const iconMap = {
 
 export default function Contact() {
   return (
-    <section className="w-full px-4 py-20 max-w-4xl mx-auto">
-      <SectionHeader command="cat contact.txt" id="contact" />
+    <section className="w-full px-4 py-24 max-w-4xl mx-auto">
+      <SectionHeader command="cat contact.txt" title="Contact" id="contact" />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -29,7 +29,7 @@ export default function Contact() {
               Want to collaborate or just say hi? Reach out through any of these channels.
             </p>
 
-            <div className="w-full max-w-md mb-6 px-4 py-3 rounded-lg border border-accent-green/30 bg-accent-green/5">
+            <div className="font-mono w-full max-w-md mb-6 px-4 py-3 rounded-lg border border-accent-green/30 bg-accent-green/5">
               <div className="flex items-center gap-2 text-sm">
                 <span className="w-2 h-2 rounded-full bg-accent-green" />
                 <span className="text-accent-green font-semibold">status:</span>
@@ -69,7 +69,7 @@ export default function Contact() {
               ))}
             </div>
 
-            <div className="mt-8 pt-6 border-t border-border space-y-2 w-full text-center">
+            <div className="font-mono mt-8 pt-6 border-t border-border space-y-2 w-full text-center">
               <div>
                 <span className="text-accent-green">{SITE.prompt}:~$</span>{' '}
                 <span className="text-text-primary">echo "Thanks for visiting!"</span>

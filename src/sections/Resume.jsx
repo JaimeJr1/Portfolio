@@ -22,8 +22,8 @@ function DiffBullet({ text }) {
 
 export default function Resume() {
   return (
-    <section className="w-full px-4 py-20 max-w-4xl mx-auto">
-      <SectionHeader command="cat resume.txt" id="resume" />
+    <section className="w-full px-4 py-24 max-w-4xl mx-auto">
+      <SectionHeader command="cat resume.txt" title="Resume" id="resume" />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -34,7 +34,7 @@ export default function Resume() {
         <Panel>
           {/* Education */}
           <div className="mb-6">
-            <div className="text-accent-purple font-semibold mb-3">=== EDUCATION ===</div>
+            <div className="font-mono text-accent-purple font-semibold mb-3">=== EDUCATION ===</div>
             {resume.education.map((edu, i) => (
               <div key={i}>
                 <div className="text-text-primary font-medium">
@@ -57,7 +57,7 @@ export default function Resume() {
 
           {/* Experience */}
           <div className="mb-6">
-            <div className="text-accent-purple font-semibold mb-3">=== EXPERIENCE ===</div>
+            <div className="font-mono text-accent-purple font-semibold mb-3">=== EXPERIENCE ===</div>
             <div className="space-y-5">
               {resume.experience.map((exp, i) => (
                 <div key={i}>
@@ -80,7 +80,7 @@ export default function Resume() {
           {/* Highlights */}
           {resume.highlights && (
             <div className="mb-6">
-              <div className="text-accent-purple font-semibold mb-3">=== HIGHLIGHTS ===</div>
+              <div className="font-mono text-accent-purple font-semibold mb-3">=== HIGHLIGHTS ===</div>
               <div className="space-y-2">
                 {resume.highlights.map((h, i) => (
                   <div key={i} className="text-text-primary text-sm flex gap-2">
@@ -94,7 +94,7 @@ export default function Resume() {
 
           {/* Skills */}
           <div className="mb-6">
-            <div className="text-accent-purple font-semibold mb-3">=== SKILLS ===</div>
+            <div className="font-mono text-accent-purple font-semibold mb-3">=== SKILLS ===</div>
             <div className="space-y-3">
               {Object.entries(resume.skills).map(([category, items]) => (
                 <div key={category} className="flex flex-wrap items-start gap-2">

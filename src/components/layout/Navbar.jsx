@@ -14,7 +14,7 @@ export default function Navbar() {
   const activeId = useScrollSpy(sectionIds)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-bg-primary/80 backdrop-blur-md border-b border-border">
+    <nav className="font-mono fixed top-0 left-0 right-0 z-50 bg-bg-primary/80 backdrop-blur-md border-b border-border">
       <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
         {/* Prompt badge */}
         <a

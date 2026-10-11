@@ -67,8 +67,8 @@ export default function About() {
   const [imgError, setImgError] = useState(false)
 
   return (
-    <section className="w-full px-4 py-20 max-w-4xl mx-auto">
-      <SectionHeader command="cat about.md" id="about" />
+    <section className="w-full px-4 py-24 max-w-4xl mx-auto">
+      <SectionHeader command="cat about.md" title="About" id="about" />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -95,14 +95,14 @@ export default function About() {
                   </div>
                 )}
               </div>
-              <span className="text-text-muted text-xs mt-2">v1.0.0</span>
+              <span className="font-mono text-text-muted text-xs mt-2">v1.0.0</span>
             </div>
 
             {/* Info */}
             <div className="flex-1 w-full">
               <CommandOutput lines={info} />
 
-              <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5 sm:flex sm:flex-wrap sm:gap-4 py-3 px-4 rounded border border-border bg-bg-primary/30">
+              <div className="font-mono mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5 sm:flex sm:flex-wrap sm:gap-4 py-3 px-4 rounded border border-border bg-bg-primary/30">
                 {quickStats.map((stat) => (
                   <div key={stat.label} className="text-xs">
                     <span className="text-text-muted">{stat.label}:</span>{' '}
@@ -128,7 +128,7 @@ export default function About() {
           </div>
 
           <div className="mt-6 border-t border-border pt-5">
-            <div className="text-text-muted text-xs mb-3">
+            <div className="font-mono text-text-muted text-xs mb-3">
               <span className="text-accent-green">$</span> ls ~/beyond-code/
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

@@ -29,7 +29,7 @@ function ProjectCard({ project, index, onViewImage }) {
       onClick={() => onViewImage(project)}
     >
       <Panel className="h-full group hover:border-accent-green transition-all duration-300">
-        <div className="flex items-center gap-2 mb-4 text-xs">
+        <div className="font-mono flex items-center gap-2 mb-4 text-xs">
           <span className="text-text-muted">{project.filename}</span>
           {project.featured && (
             <span className="text-accent-yellow">[FEATURED]</span>
@@ -65,7 +65,7 @@ function ProjectCard({ project, index, onViewImage }) {
         )}
 
         {project.metrics && (
-          <div className="flex flex-wrap gap-2 mb-3">
+          <div className="font-mono flex flex-wrap gap-2 mb-3">
             {project.metrics.map((m, i) => (
               <div
                 key={i}
@@ -148,14 +148,14 @@ export default function Projects() {
   }, [lightbox])
 
   return (
-    <section className="w-full px-4 py-20 max-w-5xl mx-auto">
-      <SectionHeader command="ls ~/projects/" id="projects" />
+    <section className="w-full px-4 py-24 max-w-5xl mx-auto">
+      <SectionHeader command="ls ~/projects/" title="Projects" id="projects" />
 
       <p className="text-text-muted text-sm text-center mb-8 -mt-4">
         Selected builds, from AI systems to embedded hardware.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {sorted.map((project, i) => (
           <ProjectCard
             key={project.title}
@@ -185,7 +185,7 @@ export default function Projects() {
               className="w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-lg border border-border bg-bg-terminal cursor-default shadow-2xl"
             >
               <div className="sticky top-0 flex items-center justify-between px-4 py-2.5 bg-bg-titlebar border-b border-border">
-                <span className="text-text-muted text-sm">{lightbox.filename}</span>
+                <span className="font-mono text-text-muted text-sm">{lightbox.filename}</span>
                 <button
                   onClick={() => setLightbox(null)}
                   className="text-text-muted hover:text-accent-red transition-colors text-xs cursor-pointer"
@@ -215,7 +215,7 @@ export default function Projects() {
 
               <div className="p-5">
                 {lightbox.metrics && (
-                  <div className="flex flex-wrap gap-2 mb-3">
+                  <div className="font-mono flex flex-wrap gap-2 mb-3">
                     {lightbox.metrics.map((m, i) => (
                       <div
                         key={i}

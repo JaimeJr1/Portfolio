@@ -266,7 +266,7 @@ export default function Hero() {
       >
         <motion.h1
           variants={cascadeItem}
-          className="text-text-primary text-lg sm:text-xl md:text-2xl font-semibold text-center leading-snug max-w-lg"
+          className="text-text-primary text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center leading-tight max-w-3xl"
         >
           Building intelligent systems —{' '}
           <span className="text-accent-green">from edge devices to the cloud</span>.
@@ -283,7 +283,7 @@ export default function Hero() {
 
         <motion.div
           variants={cascadeItem}
-          className="h-12 sm:h-6 overflow-hidden text-sm sm:text-base text-center px-2"
+          className="font-mono h-12 sm:h-6 overflow-hidden text-sm sm:text-base text-center px-2"
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -347,7 +347,7 @@ export default function Hero() {
           transition={{ delay: 0.7, duration: 0.6 }}
           className="mt-4 flex flex-col items-center gap-2"
         >
-          <span className="text-text-muted text-xs">
+          <span className="font-mono text-text-muted text-xs">
             Try typing <span className="text-accent-green">help</span> or a section name
           </span>
         </motion.div>

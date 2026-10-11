@@ -56,7 +56,7 @@ export default function TerminalWindow({ title = 'terminal', children, className
     <>
       {/* Normal inline window */}
       <div
-        className={`rounded-lg border border-border overflow-hidden bg-bg-terminal transition-all duration-300 ${clickToMaximize ? 'cursor-pointer' : ''} ${className}`}
+        className={`font-mono rounded-lg border border-border overflow-hidden bg-bg-terminal transition-all duration-300 ${clickToMaximize ? 'cursor-pointer' : ''} ${className}`}
         onClick={(e) => {
           if (!clickToMaximize || minimized) return
           const tag = e.target.closest('a, button, input, textarea')
@@ -98,7 +98,7 @@ export default function TerminalWindow({ title = 'terminal', children, className
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.85, opacity: 0 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="w-full max-w-5xl max-h-[90vh] rounded-lg border border-border overflow-hidden bg-bg-terminal shadow-2xl shadow-black/50 flex flex-col"
+              className="font-mono w-full max-w-5xl max-h-[90vh] rounded-lg border border-border overflow-hidden bg-bg-terminal shadow-2xl shadow-black/50 flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
               {titleBar(true)}

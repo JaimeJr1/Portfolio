@@ -19,7 +19,7 @@ export default function ExperienceBar() {
       transition={{ duration: 0.8 }}
       className="w-full py-6 overflow-hidden"
     >
-      <p className="text-text-muted text-xs text-center mb-5">
+      <p className="font-mono text-text-muted text-xs text-center mb-5">
         <span className="text-accent-green">$</span>{' '}
         <span className="text-accent-purple">grep</span>{' '}
         <span className="text-text-primary">"experience"</span> ./career.log
