@@ -173,7 +173,83 @@ export default function Hero() {
   }
 
   return (
-    <section className="hero-ambient min-h-[88vh] flex flex-col items-center justify-center px-4 pt-20 pb-10">
+    <section className="hero-ambient min-h-[88vh] flex flex-col items-center justify-center px-4 pt-24 pb-10">
+      <motion.div
+        variants={cascade}
+        initial="hidden"
+        animate="show"
+        className="flex flex-col items-center gap-4 mb-10 text-center"
+      >
+        <motion.p
+          variants={cascadeItem}
+          className="font-mono text-[11px] sm:text-xs tracking-[0.35em] uppercase text-text-muted"
+        >
+          AI Systems &amp; Edge Computing · CS @ Georgia Tech
+        </motion.p>
+        <motion.h1
+          variants={cascadeItem}
+          className="font-display text-7xl sm:text-8xl md:text-9xl leading-[0.9] text-text-primary"
+        >
+          Jaime Alonso
+        </motion.h1>
+        <motion.p
+          variants={cascadeItem}
+          className="italic text-text-muted text-base sm:text-lg max-w-xl"
+        >
+          Building intelligent systems —{' '}
+          <span className="text-accent-green not-italic font-medium">
+            from edge devices to the cloud
+          </span>
+          .
+        </motion.p>
+        <motion.div
+          variants={cascadeItem}
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent-green/30 bg-accent-green/5"
+        >
+          <span className="w-2 h-2 rounded-full bg-accent-green" />
+          <span className="text-accent-green text-xs font-medium">
+            Open to Summer 2027 internships
+          </span>
+        </motion.div>
+        <motion.div
+          variants={cascadeItem}
+          className="font-mono h-12 sm:h-6 overflow-hidden text-sm sm:text-base text-center px-2"
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={statIndex}
+              initial={{ y: 12, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -12, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <span className="text-accent-green">$</span>{' '}
+              <span className="text-text-muted">tail -f impact.log →</span>{' '}
+              <span className="text-accent-cyan font-semibold">
+                {PROOF_STATS[statIndex]}
+              </span>
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
+        <motion.div
+          variants={cascadeItem}
+          className="flex flex-wrap items-center justify-center gap-3 mt-1"
+        >
+          <button
+            onClick={() => scrollToSection('projects')}
+            className="px-5 py-2.5 rounded-lg bg-accent-green text-bg-primary text-sm font-semibold hover:brightness-110 transition-all cursor-pointer"
+          >
+            View projects
+          </button>
+          <button
+            onClick={() => scrollToSection('resume')}
+            className="px-5 py-2.5 rounded-lg border border-border text-text-primary text-sm hover:border-accent-green hover:text-accent-green transition-colors cursor-pointer"
+          >
+            View resume
+          </button>
+        </motion.div>
+      </motion.div>
+
       <motion.div
         layout
         initial={skipIntro ? { scale: 1, y: 0 } : { scale: 1.08, y: 28 }}
@@ -264,62 +340,6 @@ export default function Hero() {
         animate="show"
         className="mt-8 flex flex-col items-center gap-4"
       >
-        <motion.h1
-          variants={cascadeItem}
-          className="text-text-primary text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center leading-tight max-w-3xl"
-        >
-          Building intelligent systems —{' '}
-          <span className="text-accent-green">from edge devices to the cloud</span>.
-        </motion.h1>
-        <motion.div
-          variants={cascadeItem}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent-green/30 bg-accent-green/5"
-        >
-          <span className="w-2 h-2 rounded-full bg-accent-green" />
-          <span className="text-accent-green text-xs font-medium">
-            Open to Summer 2027 internships
-          </span>
-        </motion.div>
-
-        <motion.div
-          variants={cascadeItem}
-          className="font-mono h-12 sm:h-6 overflow-hidden text-sm sm:text-base text-center px-2"
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={statIndex}
-              initial={{ y: 12, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -12, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <span className="text-accent-green">$</span>{' '}
-              <span className="text-text-muted">tail -f impact.log →</span>{' '}
-              <span className="text-accent-cyan font-semibold">
-                {PROOF_STATS[statIndex]}
-              </span>
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
-
-        <motion.div
-          variants={cascadeItem}
-          className="flex flex-wrap items-center justify-center gap-3 mt-2"
-        >
-          <button
-            onClick={() => scrollToSection('projects')}
-            className="px-5 py-2.5 rounded-lg bg-accent-green text-bg-primary text-sm font-semibold hover:brightness-110 transition-all cursor-pointer"
-          >
-            View projects
-          </button>
-          <button
-            onClick={() => scrollToSection('resume')}
-            className="px-5 py-2.5 rounded-lg border border-border text-text-primary text-sm hover:border-accent-green hover:text-accent-green transition-colors cursor-pointer"
-          >
-            View resume
-          </button>
-        </motion.div>
-
         <motion.div variants={cascadeItem}>
           <button
             onClick={() => scrollToSection('projects')}

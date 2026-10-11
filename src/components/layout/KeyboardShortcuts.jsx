@@ -56,7 +56,7 @@ export default function KeyboardShortcuts() {
   return (
     <>
       {/* Floating hint */}
-      <div className="font-mono fixed bottom-6 left-6 z-40 text-text-muted text-xs hidden md:block">
+      <div className="font-mono fixed bottom-6 left-6 lg:left-[17.5rem] z-40 text-text-muted text-xs hidden md:block">
         Press <span className="text-accent-green px-1.5 py-0.5 rounded bg-bg-titlebar border border-border">?</span> for shortcuts
       </div>
 

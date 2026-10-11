@@ -37,7 +37,7 @@ export default function SectionHeader({ command, title, id }) {
         <span className="text-accent-purple">{command.slice(0, shown)}</span>
         {started && !done && <span className="cursor-blink text-accent-green">_</span>}
       </p>
-      <h2 className="text-text-primary text-2xl sm:text-3xl font-bold tracking-tight">
+      <h2 className="font-display text-text-primary text-5xl sm:text-6xl leading-none tracking-wide">
         {title}
       </h2>
     </div>

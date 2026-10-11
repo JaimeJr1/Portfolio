@@ -15,6 +15,7 @@
   --color-border: #30363d;
   --font-mono: "JetBrains Mono", monospace;
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bebas Neue", "Space Grotesk", sans-serif;
 }
 
 /* Light theme (GitHub Light palette). The pre-paint script in index.html sets

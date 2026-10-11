@@ -1,6 +1,7 @@
 export const projects = [
   {
     title: 'On-Device Whisper Inference Engine',
+    category: 'LLAMAS Lab Research',
     filename: 'whisper-edge.sh',
     description: 'Research at Georgia Tech\'s LLAMAS Lab on real-time speech recognition for wearables. A C++/Kotlin benchmarking harness tunes CPU core affinities, thread counts, and context windows — using **raw Linux syscalls to bypass Android NDK limits** — alongside a concurrent H.265 video + transcription pipeline.',
     tech: ['C++', 'Kotlin', 'GGML', 'Linux syscalls', 'ARM big.LITTLE'],
@@ -32,6 +33,7 @@ export const projects = [
   },
   {
     title: '5-Stage Pipelined Processor',
+    category: 'Computer Architecture',
     filename: 'pipelined-cpu.sh',
     description: 'A pipelined processor (IF/ID/EX/MEM/WB) designed **from scratch in CircuitSim** with a dual-ported register file. Implements **full hazard handling beyond the course baseline** — data forwarding for RAW hazards, load-use detection with automatic stalling, and branch-mispredict squashing.',
     tech: ['CircuitSim', 'Python', 'Assembly', 'Digital Logic'],
@@ -62,6 +64,7 @@ export const projects = [
   },
   {
     title: 'RatonPerez — Game AI Tournament Agent',
+    category: 'Game AI Tournament',
     filename: 'ratonperez.sh',
     description: 'Game-playing agent that placed **top 20 in the live bytefight.org tournament**. Combines a hidden Markov model with Bayesian belief updates over a 64-cell opponent distribution and a negamax engine with principal variation search, alpha-beta pruning, Zobrist hashing, and late-move reductions.',
     tech: ['Python', 'NumPy', 'JAX', 'Negamax', 'HMM'],
@@ -92,6 +95,7 @@ export const projects = [
   },
   {
     title: 'Personalized News Digest System',
+    category: 'AI Automation',
     filename: 'news-digest.sh',
     description: 'Serverless pipeline that pulls articles from 10 newspapers via RSS feeds and news APIs, ranks them by relevance with Llama 3.3 on Groq, and delivers a personalized daily digest as a scheduled GitHub Actions workflow.',
     tech: ['Python', 'Groq API', 'Llama 3.3', 'RSS', 'GitHub Actions'],
@@ -117,6 +121,7 @@ export const projects = [
   },
   {
     title: 'Solar-Oriented PV Cell System',
+    category: 'Hardware & Embedded',
     filename: 'solar-pv.sh',
     description: 'Solar PV system with automated sun tracking, built from scratch as **team software lead**. Companion mobile app connects via Bluetooth for real-time performance monitoring.',
     tech: ['C++', 'Arduino', 'MIT App Inventor', 'Hardware'],
@@ -143,6 +148,7 @@ export const projects = [
   },
   {
     title: 'Weather Reminder',
+    category: 'Automation',
     filename: 'weather-reminder.sh',
     description: 'A script that sends an email every morning with essential weather information and an inspirational quote to start the day.',
     tech: ['Python', 'SMTP', 'API'],

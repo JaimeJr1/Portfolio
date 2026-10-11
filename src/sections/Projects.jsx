@@ -1,149 +1,15 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import Panel from '../components/ui/Panel'
-import ProjectShowcase from '../components/ProjectShowcase'
+import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
 import Highlight from '../components/ui/Highlight'
 import { projects } from '../data/projects'
-
-const statusColors = {
-  active: 'bg-accent-green',
-  'in-progress': 'bg-accent-yellow',
-  archived: 'bg-accent-orange',
-}
-
-const statusLabels = {
-  active: 'active',
-  'in-progress': 'wip',
-  archived: 'archived',
-}
-
-function ProjectCard({ project, index, onViewImage }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-30px' }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="h-full cursor-pointer"
-      onClick={() => onViewImage(project)}
-    >
-      <Panel className="h-full group hover:border-accent-green transition-all duration-300">
-        <div className="font-mono flex items-center gap-2 mb-4 text-xs">
-          <span className="text-text-muted">{project.filename}</span>
-          {project.featured && (
-            <span className="text-accent-yellow">[FEATURED]</span>
-          )}
-          <span className="inline-flex items-center gap-2 ml-auto">
-            <span className="text-text-muted">{project.year}</span>
-            <span className="inline-flex items-center gap-1">
-              <span className={`w-2 h-2 rounded-full ${statusColors[project.status]}`} />
-              <span className="text-text-muted">{statusLabels[project.status]}</span>
-            </span>
-          </span>
-        </div>
-        {/* Project media, visible by default — click opens the full screenshot/demo */}
-        {project.image?.thumb && (
-          <div
-            className="relative w-full h-40 rounded border border-border/50 bg-bg-primary/50 mb-4 overflow-hidden cursor-zoom-in"
-            onClick={(e) => {
-              e.stopPropagation()
-              onViewImage(project)
-            }}
-          >
-            <img
-              src={`${import.meta.env.BASE_URL}${project.image.thumb}`}
-              alt={project.image.alt || project.title}
-              loading="lazy"
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-            />
-            {project.image.type === 'video' && (
-              <span className="absolute inset-0 flex items-center justify-center">
-                <span className="w-11 h-11 rounded-full bg-bg-primary/70 border border-accent-green/60 flex items-center justify-center text-accent-green text-sm pl-0.5">
-                  ▶
-                </span>
-              </span>
-            )}
-          </div>
-        )}
-
-        {project.metrics && (
-          <div className="font-mono flex flex-wrap gap-2 mb-3">
-            {project.metrics.map((m, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-1.5 text-xs px-2 py-1 rounded bg-accent-green/10 border border-accent-green/20"
-              >
-                <span className="text-accent-green font-bold">{m.value}</span>
-                <span className="text-text-muted">{m.label}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <h3 className="text-accent-purple text-base font-semibold mb-2">
-          {project.title}
-        </h3>
-
-        <p className="text-text-primary text-sm leading-relaxed mb-4">
-          <Highlight>{project.description}</Highlight>
-        </p>
-
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {project.tech.map((t) => (
-            <Badge key={t}>{t}</Badge>
-          ))}
-        </div>
-
-        {(project.github || project.live || project.image) && (
-          <div className="flex gap-4 text-xs pt-3 border-t border-border">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="text-accent-cyan hover:underline"
-              >
-                View code ↗
-              </a>
-            )}
-            {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="text-accent-cyan hover:underline"
-              >
-                Live demo ↗
-              </a>
-            )}
-            {project.image && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  onViewImage(project)
-                }}
-                className="text-accent-cyan hover:underline cursor-pointer"
-              >
-                {project.image.type === 'video' ? 'Watch demo' : 'View full size'}
-              </button>
-            )}
-          </div>
-        )}
-      </Panel>
-    </motion.div>
-  )
-}
 
 export default function Projects() {
   // Newest work first so the trajectory reads top-down; featured breaks ties.
   const sorted = [...projects].sort(
     (a, b) => b.year - a.year || (b.featured ? 1 : 0) - (a.featured ? 1 : 0)
   )
-  const showcased = sorted.filter((p) => p.featured)
-  const rest = sorted.filter((p) => !p.featured)
   const [lightbox, setLightbox] = useState(null)
 
   useEffect(() => {
@@ -156,20 +22,35 @@ export default function Projects() {
   }, [lightbox])
 
   return (
-    <section id="projects" className="w-full px-4 pb-16 max-w-5xl mx-auto">
-      <ProjectShowcase projects={showcased} onViewImage={setLightbox} />
+    <section id="projects" className="w-full px-4 py-16 max-w-5xl mx-auto">
+      <SectionHeader command="ls ~/projects/" title="Selected Work" />
 
-      <div className="font-mono text-text-muted text-xs mt-2 mb-5">
-        <span className="text-accent-green">$</span> ls ~/projects/more/
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {rest.map((project, i) => (
-          <ProjectCard
+      {/* Typographic index: name does the talking, click opens the full view */}
+      <div className="border-t border-border">
+        {sorted.map((project, i) => (
+          <motion.button
             key={project.title}
-            project={project}
-            index={i}
-            onViewImage={setLightbox}
-          />
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.35, delay: i * 0.04 }}
+            onClick={() => setLightbox(project)}
+            className="w-full text-left py-7 sm:py-9 border-b border-border group cursor-pointer"
+          >
+            <div className="flex items-baseline justify-between gap-6">
+              <div className="min-w-0">
+                <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-text-muted mb-2.5">
+                  {project.category} · {project.year}
+                </p>
+                <h3 className="font-display text-4xl sm:text-5xl md:text-6xl leading-[0.95] text-text-muted group-hover:text-text-primary transition-colors duration-300">
+                  {project.title}
+                </h3>
+              </div>
+              <span className="font-mono text-xs text-accent-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0 hidden sm:block">
+                $ open {project.filename} ↗
+              </span>
+            </div>
+          </motion.button>
         ))}
       </div>
 
