@@ -15,6 +15,7 @@ export const projects = [
     },
     status: 'active',
     featured: true,
+    year: 2026,
     color: '#3fb950',
     metrics: [
       { value: '88%', label: 'latency reduction' },
@@ -44,6 +45,7 @@ export const projects = [
     },
     status: 'active',
     featured: true,
+    year: 2025,
     color: '#58a6ff',
     metrics: [
       { value: '4.5–4.8x', label: 'speedup vs single-cycle' },
@@ -73,6 +75,7 @@ export const projects = [
     },
     status: 'active',
     featured: true,
+    year: 2025,
     color: '#d29922',
     metrics: [
       { value: 'Top 20', label: 'live tournament' },
@@ -96,6 +99,7 @@ export const projects = [
     live: null,
     status: 'active',
     featured: false,
+    year: 2025,
     color: '#bc8cff',
     image: {
       src: 'images/projects/news-digest.png',
@@ -127,6 +131,7 @@ export const projects = [
     },
     status: 'active',
     featured: false,
+    year: 2024,
     color: '#d29922',
     preview: [
       '$ ./solar_tracker --start',
@@ -145,6 +150,7 @@ export const projects = [
     live: null,
     status: 'active',
     featured: false,
+    year: 2025,
     color: '#bc8cff',
     image: {
       src: 'images/projects/weather-email.png',

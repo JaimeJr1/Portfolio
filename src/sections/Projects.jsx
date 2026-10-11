@@ -34,9 +34,12 @@ function ProjectCard({ project, index, onViewImage }) {
           {project.featured && (
             <span className="text-accent-yellow">[FEATURED]</span>
           )}
-          <span className="inline-flex items-center gap-1 ml-auto">
-            <span className={`w-2 h-2 rounded-full ${statusColors[project.status]}`} />
-            <span className="text-text-muted">{statusLabels[project.status]}</span>
+          <span className="inline-flex items-center gap-2 ml-auto">
+            <span className="text-text-muted">{project.year}</span>
+            <span className="inline-flex items-center gap-1">
+              <span className={`w-2 h-2 rounded-full ${statusColors[project.status]}`} />
+              <span className="text-text-muted">{statusLabels[project.status]}</span>
+            </span>
           </span>
         </div>
         {/* Project media, visible by default — click opens the full screenshot/demo */}
@@ -135,7 +138,10 @@ function ProjectCard({ project, index, onViewImage }) {
 }
 
 export default function Projects() {
-  const sorted = [...projects].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+  // Newest work first so the trajectory reads top-down; featured breaks ties.
+  const sorted = [...projects].sort(
+    (a, b) => b.year - a.year || (b.featured ? 1 : 0) - (a.featured ? 1 : 0)
+  )
   const [lightbox, setLightbox] = useState(null)
 
   useEffect(() => {
