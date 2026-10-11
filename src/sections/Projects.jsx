@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+import CursorPreview from '../components/ui/CursorPreview'
+import { useCursorPreview } from '../hooks/useCursorPreview'
 import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
 import Highlight from '../components/ui/Highlight'
@@ -12,14 +14,9 @@ export default function Projects() {
   )
   const [lightbox, setLightbox] = useState(null)
   const [hovered, setHovered] = useState(null)
-
-  // Cursor-following media preview for the hovered row (desktop only)
-  const mx = useMotionValue(0)
-  const my = useMotionValue(0)
-  const sx = useSpring(mx, { stiffness: 350, damping: 32 })
-  const sy = useSpring(my, { stiffness: 350, damping: 32 })
-  const px = useTransform(sx, (v) =>
-    Math.min(v + 36, (typeof window !== 'undefined' ? window.innerWidth : 1440) - 320)
+  const { x, y, onMouseMove } = useCursorPreview()
+  const [reduceMotion] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
   )
 
   useEffect(() => {
@@ -50,10 +47,7 @@ export default function Projects() {
           click opens the full view */}
       <div
         className="border-t border-border"
-        onMouseMove={(e) => {
-          mx.set(e.clientX)
-          my.set(e.clientY)
-        }}
+        onMouseMove={onMouseMove}
         onMouseLeave={() => setHovered(null)}
       >
         {sorted.map((project, i) => (
@@ -84,42 +78,54 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Floating preview that trails the cursor over the hovered row */}
-      <AnimatePresence>
-        {hovered?.image?.thumb && (
-          <motion.div
-            key={hovered.title}
-            initial={{ opacity: 0, scale: 0.92, rotate: -1.5 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.18, ease: 'easeOut' }}
-            className="fixed top-0 left-0 z-40 pointer-events-none hidden lg:block"
-            style={{ left: px, top: sy, y: 20 }}
-          >
-            <div className="w-72 rounded-xl border border-border overflow-hidden bg-bg-terminal shadow-2xl shadow-black/40">
-              <div className="font-mono flex items-center justify-between px-3 py-1.5 bg-bg-titlebar border-b border-border text-[10px] text-text-muted">
-                <span>{hovered.filename}</span>
-                <span>{hovered.year}</span>
-              </div>
-              <div className="relative">
-                <img
-                  src={`${import.meta.env.BASE_URL}${hovered.image.thumb}`}
-                  alt=""
-                  aria-hidden="true"
+      {/* Floating preview that trails the cursor over the hovered row;
+          video demos actually play in it */}
+      <CursorPreview
+        show={!!hovered?.image?.thumb}
+        previewKey={hovered?.title}
+        x={x}
+        y={y}
+        width={288}
+        height={220}
+      >
+        {hovered?.image && (
+          <div className="rounded-xl border border-border overflow-hidden bg-bg-terminal shadow-2xl shadow-black/40">
+            <div className="font-mono flex items-center justify-between px-3 py-1.5 bg-bg-titlebar border-b border-border text-[10px] text-text-muted">
+              <span>{hovered.filename}</span>
+              <span>{hovered.year}</span>
+            </div>
+            <div className="relative">
+              {hovered.image.type === 'video' && !reduceMotion ? (
+                <video
+                  src={`${import.meta.env.BASE_URL}${hovered.image.src}`}
+                  poster={`${import.meta.env.BASE_URL}${hovered.image.thumb}`}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
                   className="w-full h-44 object-cover"
                 />
-                {hovered.image.type === 'video' && (
-                  <span className="absolute inset-0 flex items-center justify-center">
-                    <span className="w-9 h-9 rounded-full bg-bg-primary/70 border border-accent-green/60 flex items-center justify-center text-accent-green text-xs pl-0.5">
-                      ▶
+              ) : (
+                <>
+                  <img
+                    src={`${import.meta.env.BASE_URL}${hovered.image.thumb}`}
+                    alt=""
+                    aria-hidden="true"
+                    className="w-full h-44 object-cover"
+                  />
+                  {hovered.image.type === 'video' && (
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <span className="w-9 h-9 rounded-full bg-bg-primary/70 border border-accent-green/60 flex items-center justify-center text-accent-green text-xs pl-0.5">
+                        ▶
+                      </span>
                     </span>
-                  </span>
-                )}
-              </div>
+                  )}
+                </>
+              )}
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
+      </CursorPreview>
 
       <AnimatePresence>
         {lightbox && (

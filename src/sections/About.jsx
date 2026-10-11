@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import CursorPreview from '../components/ui/CursorPreview'
+import { useCursorPreview } from '../hooks/useCursorPreview'
 import SectionHeader from '../components/terminal/SectionHeader'
 import CommandOutput from '../components/terminal/CommandOutput'
 import Badge from '../components/ui/Badge'
@@ -64,6 +66,8 @@ function StatValue({ stat }) {
 
 export default function About() {
   const [imgError, setImgError] = useState(false)
+  const [hoveredMoment, setHoveredMoment] = useState(null)
+  const { x, y, onMouseMove } = useCursorPreview()
 
   return (
     <section className="w-full px-4 py-16 max-w-5xl mx-auto">
@@ -130,10 +134,15 @@ export default function About() {
             <div className="font-mono text-text-muted text-xs mb-3">
               <span className="text-accent-green">$</span> ls ~/beyond-code/
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div
+              className="grid grid-cols-2 sm:grid-cols-4 gap-3"
+              onMouseMove={onMouseMove}
+              onMouseLeave={() => setHoveredMoment(null)}
+            >
               {moments.map((m) => (
                 <figure
                   key={m.src}
+                  onMouseEnter={() => setHoveredMoment(m)}
                   className="rounded border border-border overflow-hidden bg-bg-terminal/50 hover:border-accent-green/50 transition-colors"
                 >
                   <img
@@ -148,6 +157,30 @@ export default function About() {
                 </figure>
               ))}
             </div>
+
+            {/* Hover shows the full, uncropped photo */}
+            <CursorPreview
+              show={!!hoveredMoment}
+              previewKey={hoveredMoment?.src}
+              x={x}
+              y={y}
+              width={384}
+              height={340}
+            >
+              {hoveredMoment && (
+                <div className="rounded-xl border border-border overflow-hidden bg-bg-terminal shadow-2xl shadow-black/40">
+                  <img
+                    src={`${import.meta.env.BASE_URL}${hoveredMoment.src}`}
+                    alt=""
+                    aria-hidden="true"
+                    className="w-full max-h-72 object-contain bg-bg-primary"
+                  />
+                  <p className="font-mono px-3 py-2 text-[11px] leading-snug text-text-muted">
+                    {hoveredMoment.caption}
+                  </p>
+                </div>
+              )}
+            </CursorPreview>
           </div>
 
           <div className="mt-6 border-t border-border pt-5">
