@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion, useInView } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import Panel from '../components/ui/Panel'
 import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
@@ -19,15 +19,6 @@ const statusLabels = {
 }
 
 function ProjectCard({ project, index, onViewImage }) {
-  // No hover on touch screens — reveal the image while the card passes
-  // through the middle band of the viewport instead.
-  const previewRef = useRef(null)
-  const inCenter = useInView(previewRef, { margin: '-35% 0px -35% 0px' })
-  const [touchDevice] = useState(
-    () => typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches
-  )
-  const revealImage = touchDevice && inCenter
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -48,39 +39,30 @@ function ProjectCard({ project, index, onViewImage }) {
             <span className="text-text-muted">{statusLabels[project.status]}</span>
           </span>
         </div>
-        {/* Terminal preview block — hovering reveals the project image when one exists */}
-        <div
-          ref={previewRef}
-          className={`relative w-full h-28 rounded border border-border/50 bg-bg-primary/50 p-3 mb-4 overflow-hidden font-mono text-xs ${
-            project.image ? 'cursor-zoom-in' : ''
-          }`}
-          onClick={
-            project.image
-              ? (e) => {
-                  e.stopPropagation()
-                  onViewImage(project)
-                }
-              : undefined
-          }
-        >
-          {project.preview.map((line, i) => (
-            <div key={i} className={i === 0 ? 'text-accent-green' : 'text-text-muted'}>
-              {line}
-            </div>
-          ))}
-          <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-bg-primary/80 to-transparent pointer-events-none" />
-          {project.image?.thumb && (
+        {/* Project media, visible by default — click opens the full screenshot/demo */}
+        {project.image?.thumb && (
+          <div
+            className="relative w-full h-40 rounded border border-border/50 bg-bg-primary/50 mb-4 overflow-hidden cursor-zoom-in"
+            onClick={(e) => {
+              e.stopPropagation()
+              onViewImage(project)
+            }}
+          >
             <img
               src={`${import.meta.env.BASE_URL}${project.image.thumb}`}
-              alt=""
-              aria-hidden="true"
+              alt={project.image.alt || project.title}
               loading="lazy"
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
-                revealImage ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-              }`}
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
             />
-          )}
-        </div>
+            {project.image.type === 'video' && (
+              <span className="absolute inset-0 flex items-center justify-center">
+                <span className="w-11 h-11 rounded-full bg-bg-primary/70 border border-accent-green/60 flex items-center justify-center text-accent-green text-sm pl-0.5">
+                  ▶
+                </span>
+              </span>
+            )}
+          </div>
+        )}
 
         {project.metrics && (
           <div className="flex flex-wrap gap-2 mb-3">
@@ -110,41 +92,43 @@ function ProjectCard({ project, index, onViewImage }) {
           ))}
         </div>
 
-        <div className="flex gap-4 text-xs pt-3 border-t border-border">
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="text-accent-cyan hover:underline"
-            >
-              View code ↗
-            </a>
-          )}
-          {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="text-accent-cyan hover:underline"
-            >
-              Live demo ↗
-            </a>
-          )}
-          {project.image && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                onViewImage(project)
-              }}
-              className="text-accent-cyan hover:underline cursor-pointer"
-            >
-              {project.image.type === 'video' ? 'Watch demo' : 'View screenshot'}
-            </button>
-          )}
-        </div>
+        {(project.github || project.live || project.image) && (
+          <div className="flex gap-4 text-xs pt-3 border-t border-border">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-accent-cyan hover:underline"
+              >
+                View code ↗
+              </a>
+            )}
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-accent-cyan hover:underline"
+              >
+                Live demo ↗
+              </a>
+            )}
+            {project.image && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  onViewImage(project)
+                }}
+                className="text-accent-cyan hover:underline cursor-pointer"
+              >
+                {project.image.type === 'video' ? 'Watch demo' : 'View full size'}
+              </button>
+            )}
+          </div>
+        )}
       </Panel>
     </motion.div>
   )
