@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import Panel from '../components/ui/Panel'
 import SectionHeader from '../components/terminal/SectionHeader'
 import CopyButton from '../components/ui/CopyButton'
 import { SITE } from '../utils/constants'
@@ -14,7 +13,7 @@ const iconMap = {
 
 export default function Contact() {
   return (
-    <section className="w-full px-4 py-16 max-w-4xl mx-auto">
+    <section className="w-full px-4 py-16 max-w-5xl mx-auto">
       <SectionHeader command="cat contact.txt" title="Contact" id="contact" />
 
       <motion.div
@@ -23,9 +22,9 @@ export default function Contact() {
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.5 }}
       >
-        <Panel>
-          <div className="flex flex-col items-center">
-            <p className="text-text-muted text-sm mb-6 text-center">
+        <div className="text-sm leading-relaxed">
+          <div className="flex flex-col items-start">
+            <p className="text-text-muted text-sm mb-6">
               Want to collaborate or just say hi? Reach out through any of these channels.
             </p>
 
@@ -56,7 +55,7 @@ export default function Contact() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 rounded-lg border border-border bg-bg-primary/50 hover:border-accent-green transition-all duration-300 group"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg border border-border bg-bg-terminal/60 hover:border-accent-green transition-all duration-300 group"
                 >
                   <span className="text-accent-green select-none">&gt;</span>
                   <span className="text-text-muted w-20 text-sm">{link.label}</span>
@@ -69,7 +68,7 @@ export default function Contact() {
               ))}
             </div>
 
-            <div className="font-mono mt-8 pt-6 border-t border-border space-y-2 w-full text-center">
+            <div className="font-mono mt-8 pt-6 border-t border-border space-y-2 w-full">
               <div>
                 <span className="text-accent-green">{SITE.prompt}:~$</span>{' '}
                 <span className="text-text-primary">echo "Thanks for visiting!"</span>
@@ -82,7 +81,7 @@ export default function Contact() {
               </div>
             </div>
           </div>
-        </Panel>
+        </div>
       </motion.div>
 
       <footer className="mt-16 pt-6 border-t border-border text-center text-text-muted text-xs space-y-3">

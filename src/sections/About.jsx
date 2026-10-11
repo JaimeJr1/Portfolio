@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Panel from '../components/ui/Panel'
 import SectionHeader from '../components/terminal/SectionHeader'
 import CommandOutput from '../components/terminal/CommandOutput'
 import Badge from '../components/ui/Badge'
@@ -67,7 +66,7 @@ export default function About() {
   const [imgError, setImgError] = useState(false)
 
   return (
-    <section className="w-full px-4 py-16 max-w-4xl mx-auto">
+    <section className="w-full px-4 py-16 max-w-5xl mx-auto">
       <SectionHeader command="cat about.md" title="About" id="about" />
 
       <motion.div
@@ -76,7 +75,7 @@ export default function About() {
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.5 }}
       >
-        <Panel>
+        <div className="text-sm leading-relaxed">
           <div className="flex flex-col sm:flex-row gap-6 items-start">
             {/* Headshot — centered above the info on phones, beside it on desktop */}
             <div className="flex flex-col items-center shrink-0 self-center sm:self-start">
@@ -102,7 +101,7 @@ export default function About() {
             <div className="flex-1 w-full">
               <CommandOutput lines={info} />
 
-              <div className="font-mono mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5 sm:flex sm:flex-wrap sm:gap-4 py-3 px-4 rounded border border-border bg-bg-primary/30">
+              <div className="font-mono mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5 sm:flex sm:flex-wrap sm:gap-4 py-3 px-4 rounded border border-border bg-bg-terminal/60">
                 {quickStats.map((stat) => (
                   <div key={stat.label} className="text-xs">
                     <span className="text-text-muted">{stat.label}:</span>{' '}
@@ -114,7 +113,7 @@ export default function About() {
           </div>
 
           <div className="mt-6 border-t border-border pt-5 space-y-4">
-            <p className="text-text-primary leading-relaxed">
+            <p className="text-text-primary leading-relaxed max-w-3xl">
               <Highlight>
                 CS student at Georgia Tech researching on-device AI at the LLAMAS Lab. Spent summer
                 2026 at Plix AI (Sequoia- and a16z-backed body cameras), shipping real-time incident
@@ -135,7 +134,7 @@ export default function About() {
               {moments.map((m) => (
                 <figure
                   key={m.src}
-                  className="rounded border border-border overflow-hidden bg-bg-primary/40 hover:border-accent-green/50 transition-colors"
+                  className="rounded border border-border overflow-hidden bg-bg-terminal/50 hover:border-accent-green/50 transition-colors"
                 >
                   <img
                     src={`${import.meta.env.BASE_URL}${m.src}`}
@@ -164,7 +163,7 @@ export default function About() {
               </div>
             </div>
           </div>
-        </Panel>
+        </div>
       </motion.div>
     </section>
   )

@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import Panel from '../components/ui/Panel'
 import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
 import Highlight from '../components/ui/Highlight'
@@ -22,7 +21,7 @@ function DiffBullet({ text }) {
 
 export default function Resume() {
   return (
-    <section className="w-full px-4 py-16 max-w-4xl mx-auto">
+    <section className="w-full px-4 py-16 max-w-5xl mx-auto">
       <SectionHeader command="cat resume.txt" title="Resume" id="resume" />
 
       <motion.div
@@ -31,7 +30,7 @@ export default function Resume() {
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.5 }}
       >
-        <Panel>
+        <div className="text-sm leading-relaxed max-w-4xl">
           {/* Education */}
           <div className="mb-6">
             <div className="font-mono text-accent-purple font-semibold mb-3">=== EDUCATION ===</div>
@@ -110,10 +109,10 @@ export default function Resume() {
               ))}
             </div>
           </div>
-        </Panel>
+        </div>
 
         {/* Download Button */}
-        <div className="mt-6 flex justify-center">
+        <div className="mt-6">
           <a
             href={`${import.meta.env.BASE_URL}resume.pdf`}
             download

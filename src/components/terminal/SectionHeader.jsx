@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { SITE } from '../../utils/constants'
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
@@ -32,13 +31,13 @@ export default function SectionHeader({ command, title, id }) {
   const done = shown >= command.length
 
   return (
-    <div id={id} ref={ref} className="mb-10 text-center">
-      <p className="font-mono text-sm">
-        <span className="text-accent-green">{SITE.prompt}:~$</span>{' '}
+    <div id={id} ref={ref} className="mb-8">
+      <p className="font-mono text-xs text-text-muted mb-1">
+        <span className="text-accent-green">$</span>{' '}
         <span className="text-accent-purple">{command.slice(0, shown)}</span>
         {started && !done && <span className="cursor-blink text-accent-green">_</span>}
       </p>
-      <h2 className="text-text-primary text-4xl sm:text-5xl font-bold tracking-tight mt-3">
+      <h2 className="text-text-primary text-2xl sm:text-3xl font-bold tracking-tight">
         {title}
       </h2>
     </div>
