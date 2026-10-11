@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion'
+import { AnimatePresence, motion, useMotionValueEvent, useScroll, useSpring } from 'framer-motion'
 import Badge from './ui/Badge'
 import Highlight from './ui/Highlight'
 
@@ -8,15 +8,15 @@ const prefersReducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 const mediaVariants = {
-  enter: (dir) => ({ opacity: 0, y: dir >= 0 ? 28 : -28, scale: 0.97 }),
-  center: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.35, ease: 'easeOut' } },
-  exit: (dir) => ({ opacity: 0, y: dir >= 0 ? -24 : 24, scale: 0.98, transition: { duration: 0.22, ease: 'easeIn' } }),
+  enter: (dir) => ({ opacity: 0, y: dir >= 0 ? 20 : -20, scale: 0.985 }),
+  center: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.26, ease: 'easeOut' } },
+  exit: (dir) => ({ opacity: 0, y: dir >= 0 ? -16 : 16, scale: 0.99, transition: { duration: 0.12, ease: 'easeIn' } }),
 }
 
 const textVariants = {
-  enter: (dir) => ({ opacity: 0, y: dir >= 0 ? 24 : -24 }),
-  center: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut', delay: 0.07 } },
-  exit: (dir) => ({ opacity: 0, y: dir >= 0 ? -18 : 18, transition: { duration: 0.2, ease: 'easeIn' } }),
+  enter: (dir) => ({ opacity: 0, y: dir >= 0 ? 16 : -16 }),
+  center: { opacity: 1, y: 0, transition: { duration: 0.26, ease: 'easeOut', delay: 0.04 } },
+  exit: (dir) => ({ opacity: 0, y: dir >= 0 ? -12 : 12, transition: { duration: 0.12, ease: 'easeIn' } }),
 }
 
 // Typed `$ open <filename>` accent; remounted (via key) on each project
@@ -26,7 +26,7 @@ function TypedCommand({ text, reduceMotion }) {
 
   useEffect(() => {
     if (reduceMotion || chars >= text.length) return
-    const t = setTimeout(() => setChars((c) => c + 1), 40)
+    const t = setTimeout(() => setChars((c) => c + 1), 28)
     return () => clearTimeout(t)
   }, [chars, reduceMotion, text.length])
 
@@ -56,6 +56,8 @@ export default function ProjectShowcase({ projects, onViewImage }) {
     target: wrapperRef,
     offset: ['start start', 'end end'],
   })
+  // Continuous fill so every pixel of scroll gets visible feedback between swaps.
+  const railProgress = useSpring(scrollYProgress, { stiffness: 220, damping: 34 })
 
   useMotionValueEvent(scrollYProgress, 'change', (v) => {
     const next = Math.min(projects.length - 1, Math.max(0, Math.floor(v * projects.length)))
@@ -80,7 +82,7 @@ export default function ProjectShowcase({ projects, onViewImage }) {
   const project = projects[index]
 
   return (
-    <div ref={wrapperRef} style={{ height: `${projects.length * 100}vh` }}>
+    <div ref={wrapperRef} style={{ height: `${projects.length * 70}vh` }}>
       <div className="sticky top-0 h-svh flex items-center justify-center overflow-hidden pt-14">
         <div className="showcase-ambient absolute inset-0 pointer-events-none" aria-hidden="true" />
 
@@ -214,18 +216,24 @@ export default function ProjectShowcase({ projects, onViewImage }) {
             </motion.div>
           </AnimatePresence>
 
-          {/* Progress: counter + rail, centered under the stage */}
+          {/* Progress: counter + continuously filling rail with slide boundaries */}
           <div className="mt-10 flex items-center justify-center gap-3 font-mono text-xs text-text-muted">
             <span>
               [{index + 1}/{projects.length}]
             </span>
-            <span className="flex items-center gap-2" aria-hidden="true">
-              {projects.map((p, i) => (
+            <span
+              className="relative block w-44 h-1 rounded-full bg-border overflow-hidden"
+              aria-hidden="true"
+            >
+              <motion.span
+                className="absolute inset-0 origin-left bg-accent-green"
+                style={{ scaleX: railProgress }}
+              />
+              {projects.slice(1).map((p, i) => (
                 <span
                   key={p.title}
-                  className={`h-1 rounded-full transition-all duration-300 ${
-                    i === index ? 'w-8 bg-accent-green' : 'w-3 bg-border'
-                  }`}
+                  className="absolute top-0 bottom-0 w-px bg-bg-primary"
+                  style={{ left: `${((i + 1) / projects.length) * 100}%` }}
                 />
               ))}
             </span>
