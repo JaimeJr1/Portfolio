@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import SectionHeader from '../components/terminal/SectionHeader'
 import Badge from '../components/ui/Badge'
 import Highlight from '../components/ui/Highlight'
@@ -11,6 +11,16 @@ export default function Projects() {
     (a, b) => b.year - a.year || (b.featured ? 1 : 0) - (a.featured ? 1 : 0)
   )
   const [lightbox, setLightbox] = useState(null)
+  const [hovered, setHovered] = useState(null)
+
+  // Cursor-following media preview for the hovered row (desktop only)
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const sx = useSpring(mx, { stiffness: 350, damping: 32 })
+  const sy = useSpring(my, { stiffness: 350, damping: 32 })
+  const px = useTransform(sx, (v) =>
+    Math.min(v + 36, (typeof window !== 'undefined' ? window.innerWidth : 1440) - 320)
+  )
 
   useEffect(() => {
     if (!lightbox) return
@@ -21,12 +31,31 @@ export default function Projects() {
     return () => window.removeEventListener('keydown', onKey)
   }, [lightbox])
 
+  // Warm thumbnails so the hover preview never pops in empty
+  useEffect(() => {
+    sorted.forEach((p) => {
+      if (p.image?.thumb) {
+        const img = new Image()
+        img.src = `${import.meta.env.BASE_URL}${p.image.thumb}`
+      }
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <section id="projects" className="w-full px-4 py-16 max-w-5xl mx-auto">
       <SectionHeader command="ls ~/projects/" title="Selected Work" />
 
-      {/* Typographic index: name does the talking, click opens the full view */}
-      <div className="border-t border-border">
+      {/* Typographic index: name does the talking, hover previews the work,
+          click opens the full view */}
+      <div
+        className="border-t border-border"
+        onMouseMove={(e) => {
+          mx.set(e.clientX)
+          my.set(e.clientY)
+        }}
+        onMouseLeave={() => setHovered(null)}
+      >
         {sorted.map((project, i) => (
           <motion.button
             key={project.title}
@@ -35,11 +64,12 @@ export default function Projects() {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.35, delay: i * 0.04 }}
             onClick={() => setLightbox(project)}
+            onMouseEnter={() => setHovered(project)}
             className="w-full text-left py-7 sm:py-9 border-b border-border group cursor-pointer"
           >
             <div className="flex items-baseline justify-between gap-6">
               <div className="min-w-0">
-                <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-text-muted mb-2.5">
+                <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-text-muted group-hover:text-accent-green transition-colors duration-300 mb-2.5">
                   {project.category} · {project.year}
                 </p>
                 <h3 className="font-display text-4xl sm:text-5xl md:text-6xl leading-[0.95] text-text-muted group-hover:text-text-primary transition-colors duration-300">
@@ -53,6 +83,43 @@ export default function Projects() {
           </motion.button>
         ))}
       </div>
+
+      {/* Floating preview that trails the cursor over the hovered row */}
+      <AnimatePresence>
+        {hovered?.image?.thumb && (
+          <motion.div
+            key={hovered.title}
+            initial={{ opacity: 0, scale: 0.92, rotate: -1.5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.18, ease: 'easeOut' }}
+            className="fixed top-0 left-0 z-40 pointer-events-none hidden lg:block"
+            style={{ left: px, top: sy, y: 20 }}
+          >
+            <div className="w-72 rounded-xl border border-border overflow-hidden bg-bg-terminal shadow-2xl shadow-black/40">
+              <div className="font-mono flex items-center justify-between px-3 py-1.5 bg-bg-titlebar border-b border-border text-[10px] text-text-muted">
+                <span>{hovered.filename}</span>
+                <span>{hovered.year}</span>
+              </div>
+              <div className="relative">
+                <img
+                  src={`${import.meta.env.BASE_URL}${hovered.image.thumb}`}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-full h-44 object-cover"
+                />
+                {hovered.image.type === 'video' && (
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="w-9 h-9 rounded-full bg-bg-primary/70 border border-accent-green/60 flex items-center justify-center text-accent-green text-xs pl-0.5">
+                      ▶
+                    </span>
+                  </span>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {lightbox && (
