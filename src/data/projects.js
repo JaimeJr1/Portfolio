@@ -130,7 +130,7 @@ export const projects = [
       label: 'tracker-demo.mp4',
     },
     status: 'active',
-    featured: false,
+    featured: true,
     year: 2024,
     color: '#d29922',
     preview: [
