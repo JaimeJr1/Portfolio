@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion'
 import SectionHeader from '../components/terminal/SectionHeader'
-import Badge from '../components/ui/Badge'
+import SkillsMarquee from '../components/SkillsMarquee'
 import Highlight from '../components/ui/Highlight'
 import { resume } from '../data/resume'
+
+// Deterministic short "commit" hashes for the achievements git log.
+const HASHES = ['a3f9c21', '7e4d0b8', 'c91a4f2', '2b8e7d3', 'f60c5a9']
 
 const ACCENTS = [
   'var(--color-accent-green)',
@@ -92,42 +95,40 @@ export default function Resume() {
         })}
       </div>
 
-      {/* Highlights */}
+      {/* Highlights as a git log */}
       {resume.highlights && (
-        <div className="mt-2 mb-8 max-w-3xl">
-          <div className="font-mono text-accent-purple font-semibold mb-3 text-sm">
-            === HIGHLIGHTS ===
-          </div>
-          <div className="space-y-2">
+        <div className="mt-2 mb-14 max-w-3xl">
+          <p className="font-mono text-xs text-text-muted mb-1">
+            <span className="text-accent-green">$</span>{' '}
+            <span className="text-accent-purple">git log --achievements</span>
+          </p>
+          <h3 className="font-display text-3xl sm:text-4xl tracking-wide text-text-primary mb-5">
+            Highlights
+          </h3>
+          <div className="font-mono text-sm space-y-2.5">
             {resume.highlights.map((h, i) => (
-              <div key={i} className="text-text-primary text-sm flex gap-2">
-                <span className="text-accent-yellow select-none">★</span>
-                <Highlight>{h}</Highlight>
+              <div key={i} className="flex gap-3 items-baseline">
+                <span className="text-accent-yellow shrink-0">{HASHES[i % HASHES.length]}</span>
+                <span className="text-accent-green select-none shrink-0">★</span>
+                <span className="text-text-primary">
+                  <Highlight>{h}</Highlight>
+                </span>
               </div>
             ))}
           </div>
         </div>
       )}
 
-      {/* Skills */}
-      <div className="mb-8 max-w-3xl">
-        <div className="font-mono text-accent-purple font-semibold mb-3 text-sm">
-          === SKILLS ===
-        </div>
-        <div className="space-y-3">
-          {Object.entries(resume.skills).map(([category, items]) => (
-            <div key={category} className="flex flex-wrap items-start gap-2">
-              <span className="font-mono text-text-muted text-sm capitalize min-w-[100px]">
-                {category}:
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {items.map((item) => (
-                  <Badge key={item}>{item}</Badge>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* Toolkit: counter-scrolling logo marquee */}
+      <div className="mb-14">
+        <p className="font-mono text-xs text-text-muted mb-1">
+          <span className="text-accent-green">$</span>{' '}
+          <span className="text-accent-purple">cat toolkit.txt</span>
+        </p>
+        <h3 className="font-display text-3xl sm:text-4xl tracking-wide text-text-primary mb-6">
+          Toolkit
+        </h3>
+        <SkillsMarquee />
       </div>
 
       {/* Download Button */}
