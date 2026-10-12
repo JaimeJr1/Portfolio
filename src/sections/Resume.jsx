@@ -110,9 +110,21 @@ export default function Resume() {
               <div key={i} className="flex gap-3 items-baseline">
                 <span className="text-accent-yellow shrink-0">{HASHES[i % HASHES.length]}</span>
                 <span className="text-accent-green select-none shrink-0">★</span>
-                <span className="text-text-primary">
-                  <Highlight>{h}</Highlight>
-                </span>
+                {h.url ? (
+                  <a
+                    href={h.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text-primary hover:text-accent-cyan transition-colors"
+                  >
+                    <Highlight>{h.text}</Highlight>
+                    <span className="text-accent-cyan"> ↗</span>
+                  </a>
+                ) : (
+                  <span className="text-text-primary">
+                    <Highlight>{h.text}</Highlight>
+                  </span>
+                )}
               </div>
             ))}
           </div>

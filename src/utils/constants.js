@@ -2,7 +2,6 @@ export const SITE = {
   name: 'Jaime Alonso',
   title: 'AI Systems & Edge Computing Researcher | CS @ Georgia Tech',
   prompt: 'jaime@portfolio',
-  email: 'jalonso34@gatech.edu',
   currentlyWorkingOn: 'LLAMAS Lab — On-Device AI Research',
   sourceCode: 'https://github.com/JaimeJr1/Portfolio',
 }

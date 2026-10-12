@@ -60,7 +60,7 @@ export default function Sidebar() {
       >
         <span className="w-9 h-9 rounded-full overflow-hidden border border-accent-green/60 bg-bg-primary shrink-0">
           <img
-            src={`${import.meta.env.BASE_URL}images/headshot.png`}
+            src={`${import.meta.env.BASE_URL}images/headshot-small.png`}
             alt="Jaime Alonso"
             className="w-full h-full object-cover"
           />

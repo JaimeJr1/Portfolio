@@ -53,10 +53,13 @@ export const resume = {
     },
   ],
   highlights: [
-    'Nova 111 Spain 2026 — Ranked **Top 10 nationally in Computer Science** (111 selected nationwide)',
-    'Ramblin\' Rocket Club — Deputy Lead, Software & Simulations',
-    'Elected CS Representative — GT Student Government (2025)',
-    'Rocket League — Grand Champion, **top 0.1% globally**',
+    {
+      text: 'Nova 111 Spain 2026 — Ranked **Top 10 nationally in Computer Science** (111 selected nationwide)',
+      url: 'https://www.novatalent.com/111-list/the-nova-111-student-list-spain-2026/',
+    },
+    { text: 'Ramblin\' Rocket Club — Deputy Lead, Software & Simulations' },
+    { text: 'Elected CS Representative — GT Student Government (2025)' },
+    { text: 'Rocket League — Grand Champion, **top 0.1% globally**' },
   ],
   skills: {
     languages: ['C++', 'C', 'Python', 'Kotlin', 'Java', 'JavaScript', 'HTML/CSS'],
